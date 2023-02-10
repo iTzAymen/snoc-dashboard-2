@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-zinc-800 text-zinc-50;
+    font-family: "Inter", sans-serif;
+  }
+
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+    border: 0 solid #e5e7eb;
+  }
+
+  .nav-menu-button {
+    @apply font-medium text-xl text-zinc-500 hover:text-zinc-100 active:text-white;
+    @apply my-auto mx-auto;
+  }
+
+  .special-menu-button {
+    @apply flex w-full justify-center rounded-full bg-black border-2 border-zinc-500 bg-opacity-20 px-3 py-1 nav-menu-button hover:border-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75;
+  }
+
+  @media only screen and (max-width: theme(screens.md)) {
+    .responsive-nav {
+      @apply flex flex-col align-middle gap-5;
+      @apply absolute top-0 right-0 h-full w-full;
+      @apply pt-32 pb-6;
+      @apply bg-zinc-900;
+    }
+
+    .nav-menu-button {
+      @apply text-xl hover:bg-zinc-800 active:bg-zinc-850 box-border w-11/12 text-center py-3 my-0;
+      @apply rounded-xl;
+    }
+
+    #profile-btn {
+      @apply w-11/12 text-center py-0 mt-auto bg-opacity-0;
+    }
+
+    .special-menu-button {
+      @apply w-full h-full mx-0 py-4;
+    }
+  }
+}
