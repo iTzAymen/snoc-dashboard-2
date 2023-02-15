@@ -15,9 +15,9 @@ export default function Navbar() {
     navRef.current.classList.toggle("hidden");
   };
   return (
-    <nav className="bg-zinc-900 w-full shadow-lg">
+    <nav className="z-50 bg-zinc-900 w-full shadow-lg sticky top-0">
       <div className="md:container flex justify-between px-4 py-4">
-        <div className="flex z-20 justify-between gap-4 flex-grow md:flex-grow-0">
+        <div className="flex justify-between gap-4 flex-grow md:flex-grow-0">
           <Logo className="h-16"></Logo>
           <h1 className="text-white text-lg xs:text-3xl font-semibold m-auto">
             SNOC DASHBOARD
@@ -34,7 +34,7 @@ export default function Navbar() {
             <a href="#">Overview</a>
           </li>
           <li className="nav-menu-button">
-            <a href="#">Daily</a>
+            <a href="#">Points Of Sale</a>
           </li>
           <li className="nav-menu-button">
             <a href="#">History</a>

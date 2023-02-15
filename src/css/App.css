@@ -26,10 +26,18 @@
     @apply flex w-full justify-center rounded-full bg-black border-2 border-zinc-500 bg-opacity-20 px-3 py-1 nav-menu-button hover:border-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75;
   }
 
+  .dropdown-list::-webkit-scrollbar {
+    @apply w-2 bg-zinc-100 rounded bg-opacity-5;
+  }
+
+  .dropdown-list::-webkit-scrollbar-thumb {
+    @apply bg-zinc-100 rounded bg-opacity-10;
+  }
+
   @media only screen and (max-width: theme(screens.md)) {
     .responsive-nav {
       @apply flex flex-col align-middle gap-5;
-      @apply absolute top-0 right-0 h-full w-full;
+      @apply fixed top-0 right-0 h-full w-full;
       @apply pt-32 pb-6;
       @apply bg-zinc-900;
     }
