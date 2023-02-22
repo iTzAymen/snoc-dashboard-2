@@ -7,8 +7,9 @@ export default function DaysDropdown({
   label,
   droplist,
   updateDate,
+  initial_value,
 }) {
-  const [selected, setSelected] = useState(droplist[droplist.length - 1]);
+  const [selected, setSelected] = useState(initial_value);
   const updateSelected = (value) => {
     if (label == "Day") {
       updateDate({ day: value.value });
@@ -27,7 +28,7 @@ export default function DaysDropdown({
         <Listbox.Button
           className={
             className +
-            " relative w-full cursor-default py-2 pl-3 pr-8 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+            " relative w-full cursor-default py-2 pl-3 pr-8 text-left shadow-md focus:outline-none focus-visible:border-rose-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-300 sm:text-sm"
           }
         >
           <span className="block truncate">
@@ -67,7 +68,7 @@ export default function DaysDropdown({
                       {object.value}
                     </span>
                     {selected ? (
-                      <span className="absolute inset-y-0 left-0 flex items-center pl-2 text-rose-600">
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-2 text-rose-100">
                         <CheckIcon className="h-5 w-5" aria-hidden="true" />
                       </span>
                     ) : null}

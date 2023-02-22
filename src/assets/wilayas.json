@@ -18,6 +18,7 @@
     {
       "id": "4",
       "name": "Oum El Bouaghi",
+      "alt": "OUM EL-BOUAGHI",
       "ar_name": "أم البواقي"
     },
     {
@@ -28,6 +29,7 @@
     {
       "id": "6",
       "name": "Béjaïa",
+      "alt": "BEJAIA",
       "ar_name": "بجاية"
     },
     {
@@ -58,6 +60,7 @@
     {
       "id": "12",
       "name": "Tbessa",
+      "alt": "TEBESSA",
       "ar_name": "تبسة"
     },
     {
@@ -73,6 +76,7 @@
     {
       "id": "15",
       "name": "Tizi Ouzou",
+      "alt": "TIZI-OUZOU",
       "ar_name": "تيزي وزو"
     },
     {
@@ -98,6 +102,7 @@
     {
       "id": "20",
       "name": "Saeda",
+      "alt": "SAIDA",
       "ar_name": "سعيدة"
     },
     {
@@ -108,6 +113,7 @@
     {
       "id": "22",
       "name": "Sidi Bel Abbes",
+      "alt": "SIDI-BELABBES",
       "ar_name": "سيدي بلعباس"
     },
     {
@@ -158,6 +164,7 @@
     {
       "id": "32",
       "name": "El Bayadh",
+      "alt": "EL-BAYADH",
       "ar_name": "البيض"
     },
     {
@@ -167,7 +174,7 @@
     },
     {
       "id": "34",
-      "name": "Bordj Bou Arreridj",
+      "name": "BORDJ-BOU-ARRERIDJ",
       "alt": "BORDJ-BOU-ARRERID",
       "ar_name": "برج بوعريريج"
     },
@@ -179,6 +186,7 @@
     {
       "id": "36",
       "name": "El Tarf",
+      "alt": "EL-TAREF",
       "ar_name": "الطارف"
     },
     {
@@ -194,6 +202,7 @@
     {
       "id": "39",
       "name": "El Oued",
+      "alt": "EL-OUED",
       "ar_name": "الوادي"
     },
     {
@@ -204,6 +213,7 @@
     {
       "id": "41",
       "name": "Souk Ahras",
+      "alt": "SOUK-AHRAS",
       "ar_name": "سوق أهراس"
     },
     {
@@ -219,6 +229,7 @@
     {
       "id": "44",
       "name": "Ain Defla",
+      "alt": "AIN-DEFLA",
       "ar_name": "عين الدفلى"
     },
     {
@@ -229,11 +240,12 @@
     {
       "id": "46",
       "name": "Ain Temouchent",
+      "alt": "AIN-TEMOUCHENT",
       "ar_name": "عين تموشنت"
     },
     {
       "id": "47",
-      "name": "Ghardaefa",
+      "name": "GHARDAIA",
       "ar_name": "غرداية"
     },
     {
@@ -244,26 +256,31 @@
     {
       "id": "49",
       "name": "El Mghair",
+      "alt": "EL-MGHAIER",
       "ar_name": "المغير"
     },
     {
       "id": "50",
       "name": "El Menia",
+      "alt": "EL-MENIAA",
       "ar_name": "المنيعة"
     },
     {
       "id": "51",
       "name": "Ouled Djellal",
+      "alt": "OULED-DJELLAL",
       "ar_name": "أولاد جلال"
     },
     {
       "id": "52",
       "name": "Bordj Baji Mokhtar",
+      "alt": "BORDJ-BADJI-MOKHTAR",
       "ar_name": "برج باجي مختار"
     },
     {
       "id": "53",
       "name": "Béni Abbès",
+      "alt": "BENI-ABBES",
       "ar_name": "بني عباس"
     },
     {
@@ -284,6 +301,7 @@
     {
       "id": "57",
       "name": "In Salah",
+      "alt": "IN-SALAH",
       "ar_name": "عين صالح"
     },
     {

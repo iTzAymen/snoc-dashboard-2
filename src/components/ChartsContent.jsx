@@ -1,36 +1,25 @@
-import { ChartCard, MapCard } from "./ChartCard";
-import RecentTransactions from "./RecentTransactions";
-export default function ChartsContent({ overviewData }) {
-  if (!overviewData) {
-    return;
-  }
+import { CityData, OfferData } from "../js/DataToChartData";
+import { ChartCard, MapCard, TransactionTrendCard } from "./ChartCard";
+import PosCard from "./PosCard";
 
-  const transactions_count = overviewData.transactions_count.sort(
-    (item1, item2) => {
-      if (item1._id < item2._id) {
-        return -1;
-      }
-      return 1;
-    }
-  );
-
+export default function ChartsContent({ cardsData }) {
+  const offer_data = OfferData(cardsData[3]);
+  const city_data = CityData(cardsData[2]);
   return (
     <div
       id="charts"
-      className="grid w-full grid-cols-1 lg:grid-cols-3 lg:gap-4"
+      className="grid w-full grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-4"
+      style={{ gridTemplateRows: "auto 4rem auto" }}
     >
-      <ChartCard
+      <TransactionTrendCard
         className="col-span-2"
-        dataset={transactions_count}
-        type="line"
         label="transactions"
-        dated={true}
         height={350}
       >
         Transactions trend
-      </ChartCard>
+      </TransactionTrendCard>
       <ChartCard
-        dataset={overviewData.offer_count}
+        dataset={offer_data}
         className="row-span-2"
         type="pie"
         label="offer"
@@ -40,14 +29,12 @@ export default function ChartsContent({ overviewData }) {
       </ChartCard>
       <MapCard
         className="col-span-2 row-span-3"
-        overviewData={overviewData}
+        city_data={city_data}
         height={700}
       >
         Wilayas
       </MapCard>
-      <RecentTransactions className="col-span-1 row-span-2 bg-zinc-900">
-        Recent Transactions
-      </RecentTransactions>
+      <PosCard className="col-span-1 row-span-2">Points of Sale</PosCard>
     </div>
   );
 }

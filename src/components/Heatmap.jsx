@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { data } from "../assets/wilayas.json";
 import { WilayasSVG_Data } from "../assets/WilayasSVG";
+import { CityData } from "../js/DataToChartData";
 
 const wilayas = data.map((val) => val.name.toUpperCase());
 const getWilayaName = (wilaya_id) => {
@@ -23,7 +24,7 @@ const getWilayaId = (wilaya_name) => {
     if (el) {
       id = el.id;
     } else {
-      id = 1;
+      return null;
     }
   }
   return id;
@@ -41,8 +42,8 @@ const getWilayaSVG = (wilaya_id) => {
 
 const HeatmapTooltip = ({ label, value, xPos, yPos, enabled }) => {
   const className = enabled
-    ? "bg-black  bg-opacity-70 rounded-md p-2 absolute pointer-events-none opacity-100 transition-all"
-    : "bg-black  bg-opacity-70 rounded-md p-2 absolute pointer-events-none opacity-0 transition-all";
+    ? "bg-black  bg-opacity-70 rounded-md p-2 absolute pointer-events-none opacity-100 transition-all z-30"
+    : "bg-black  bg-opacity-70 rounded-md p-2 absolute pointer-events-none opacity-0 transition-all z-30";
   return (
     <div className={className} style={{ top: yPos + "px", left: xPos + "px" }}>
       <h1 className="font-bold text-xs text-white">{label}</h1>
@@ -51,23 +52,22 @@ const HeatmapTooltip = ({ label, value, xPos, yPos, enabled }) => {
   );
 };
 
-const Heatmap = ({ overviewData, height }) => {
-  if (!overviewData) {
-    return <div>no data</div>;
-  }
-  const { city_count } = overviewData;
-
-  const maxCityCount = city_count.reduce(
+const Heatmap = ({ city_data, height }) => {
+  const maxCityCount = city_data.reduce(
     (max, obj) => (obj.count > max ? obj.count : max),
     0
   );
 
   const averageCityCount =
-    city_count.reduce((sum, obj) => sum + obj.count, 0) / city_count.length;
+    city_data.reduce((sum, obj) => sum + obj.count, 0) / city_data.length;
   let WilayasSVG_Data_copy = [...WilayasSVG_Data_firstcopy];
 
-  city_count.forEach((val) => {
+  city_data.forEach((val) => {
     const wilaya_id = getWilayaId(val._id);
+    if (!wilaya_id) {
+      console.log(`no id found for ${val._id}`);
+      return;
+    }
     let wilaya_svg_props = getWilayaSVG(wilaya_id);
     if (!wilaya_svg_props) {
       return;
@@ -105,7 +105,7 @@ const Heatmap = ({ overviewData, height }) => {
     });
 
     setStyle({
-      fillOpacity: 0.9,
+      fillOpacity: 0.5,
     });
   };
 
@@ -125,10 +125,11 @@ const Heatmap = ({ overviewData, height }) => {
   const WilayasSVG = WilayasSVG_Data_copy.map((val) => {
     const [style, setStyle] = useState({
       fillOpacity: val.opacity ? val.opacity : 0.025,
+      strokeOpacity: "0.1",
     });
     return (
       <path
-        className="fill-rose-700 stroke-rose-700 transition-all"
+        className="fill-white transition-all hover:fill-rose-700 hover:stroke-rose-400"
         style={style}
         key={val.id}
         id={val.id}

@@ -7,7 +7,7 @@ export default function ProfileBtn({ children }) {
   return (
     <Menu as="div" className="relative inline-block text-left w-full h-full">
       <div className="w-full h-full">
-        <Menu.Button className="special-menu-button shadow-inner shadow-zinc-800 hover:shadow-zinc-500">
+        <Menu.Button className="special-menu-button">
           {children}
           <ChevronDownIcon
             className="hidden md:block ml-1 -mr-1 my-auto h-5 w-5"
@@ -22,17 +22,18 @@ export default function ProfileBtn({ children }) {
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
+        enterFrom="transform opacity-0 scale-100"
         enterTo="transform opacity-100 scale-100"
         leave="transition ease-in duration-75"
         leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+        leaveTo="transform opacity-0 scale-100"
       >
-        <Menu.Items className="absolute -top-32 md:top-10 md:right-0 mt-2 w-full md:w-56 origin-top-right divide-y divide-zinc-700 divide-opacity-30 rounded-md bg-zinc-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="px-1 py-1 ">
+        <Menu.Items className="absolute overflow-hidden -top-72 md:top-10 md:right-0 mt-2 w-full md:w-56 origin-top-right divide-y divide-zinc-700 divide-opacity-30 rounded-lg bg-zinc-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <ProfileCard username="Aymen" rank="admin" />
+          <div className="">
             <MenuItem Icon={SettingsIcon}>Settings</MenuItem>
           </div>
-          <div className="px-1 py-1 ">
+          <div className="">
             <MenuItem Icon={SignoutIcon}>Sign out</MenuItem>
           </div>
         </Menu.Items>
@@ -47,13 +48,31 @@ function MenuItem({ children, Icon }) {
       {({ active }) => (
         <button
           className={`${
-            active ? "bg-primary text-white" : "text-white"
-          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+            active ? "bg-rose-900 text-white" : " text-white"
+          } group flex w-full items-center px-2 py-2 text-sm`}
         >
           <Icon className="mr-3" />
           {children}
         </button>
       )}
     </Menu.Item>
+  );
+}
+
+function ProfileCard({ username, rank }) {
+  return (
+    <div className="h-44 p-2 gap-2 flex flex-col align-baseline overflow-hidden">
+      <img
+        src={`https://api.dicebear.com/5.x/identicon/svg?seed=${
+          username + rank
+        }`}
+        alt="avatar"
+        className="bg-zinc-900 rounded-full mx-auto my-2 h-24 aspect-square"
+      ></img>
+      <div className="flex flex-col text-center">
+        <p className="text-xs text-zinc-200 font-light capitalize">{rank}</p>
+        <h1 className="text-sm text-zinc-50 capitalize">{username}</h1>
+      </div>
+    </div>
   );
 }

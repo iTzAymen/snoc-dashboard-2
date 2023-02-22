@@ -34,6 +34,14 @@
     @apply bg-zinc-100 rounded bg-opacity-10;
   }
 
+  .focus-rose {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300;
+  }
+
+  .focus-zinc {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500;
+  }
+
   @media only screen and (max-width: theme(screens.md)) {
     .responsive-nav {
       @apply flex flex-col align-middle gap-5;
@@ -43,16 +51,18 @@
     }
 
     .nav-menu-button {
-      @apply text-xl hover:bg-zinc-800 active:bg-zinc-850 box-border w-11/12 text-center py-3 my-0;
+      @apply text-xl box-border w-11/12 text-center py-3 my-0;
       @apply rounded-xl;
+      @apply bg-zinc-800 border-zinc-700 border;
+      @apply hover:bg-rose-900 active:bg-rose-800 hover:border-rose-500;
     }
 
     #profile-btn {
-      @apply w-11/12 text-center py-0 mt-auto bg-opacity-0;
+      @apply w-11/12 text-center py-0 mt-auto bg-opacity-0 border-0;
     }
 
     .special-menu-button {
-      @apply w-full h-full mx-0 py-4;
+      @apply w-full h-full mx-0 py-4 hover:bg-zinc-900;
     }
   }
 }

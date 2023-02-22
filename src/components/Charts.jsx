@@ -46,10 +46,17 @@ export function PieChart({ dataset, label, height }) {
       {
         label: label,
         data: dataset.map((val) => val.count),
-        // backgroundColor: ["#52525b"],
+        // backgroundColor: [
+        //   "#881337",
+        //   "#9f1239",
+        //   "#be123c",
+        //   "#e11d48",
+        //   "#f43f5e",
+        //   "#fb7185",
+        // ],
         // borderColor: ["#e4e4e7"],
         borderWidth: 2,
-        borderRadius: 6,
+        borderRadius: 0,
       },
     ],
   };
@@ -70,9 +77,8 @@ export function PieChart({ dataset, label, height }) {
     }
 
     const data = canvasRef.current.legend.legendItems;
-    console.log(data);
     setLegend(
-      <div className="grid grid-cols-2 gap-2 mt-14">
+      <div className="grid grid-cols-2 gap-2 mt-auto">
         {data.map((e, idx) => (
           <div key={idx} className="flex items-center col-span-1 h-8">
             <div
@@ -86,8 +92,8 @@ export function PieChart({ dataset, label, height }) {
     );
   }, [canvasRef]);
   return (
-    <div className="">
-      <div>
+    <div>
+      <div className="mb-10">
         <Doughnut
           ref={canvasRef}
           data={chartData}
@@ -100,54 +106,17 @@ export function PieChart({ dataset, label, height }) {
   );
 }
 
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
 export function LineChart({ dataset, label, height }) {
   if (!dataset) {
     return;
   }
 
-  const current_month = new Date().getMonth();
-
-  let temp = [];
-  for (let i = 0; i < 12; i++) {
-    const month = current_month + i + 2;
-    temp[i] = {
-      _id: (month + 12) % 12,
-      count: 0,
-    };
-  }
-
-  temp = temp.map((item) => {
-    const actual = dataset.find((item_1) => {
-      return item_1._id == item._id;
-    });
-
-    if (actual) {
-      return actual;
-    }
-    return item;
-  });
-
   const chartData = {
-    labels: temp.map((val) => months[val._id]),
+    labels: dataset.map((val) => val._id),
     datasets: [
       {
         label: label,
-        data: temp.map((val) => val.count),
+        data: dataset.map((val) => val.count),
         fill: true,
         backgroundColor: ["rgba(190, 18, 60, 0.2)"],
         borderColor: ["#be123c"],
@@ -157,7 +126,6 @@ export function LineChart({ dataset, label, height }) {
       },
     ],
   };
-
   const options = {
     maintainAspectRatio: false,
     plugins: {
