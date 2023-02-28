@@ -14,6 +14,20 @@ export default function Navbar() {
     navRef.current.classList.toggle("responsive-nav");
     navRef.current.classList.toggle("hidden");
   };
+  if (window.location.href.endsWith("/login")) {
+    return (
+      <nav className="z-50 bg-zinc-900 w-full shadow-lg sticky top-0">
+        <div className="md:container flex justify-between px-4 py-4">
+          <div className="flex mx-auto justify-between gap-4 flex-grow md:flex-grow-0">
+            <Logo className="h-16"></Logo>
+            <h1 className="text-white text-lg xs:text-3xl font-semibold m-auto">
+              SNOC DASHBOARD
+            </h1>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav className="z-50 bg-zinc-900 w-full shadow-lg sticky top-0">

@@ -5,6 +5,8 @@ import PosPage from "./pages/PosPage";
 import HistoryPage from "./pages/HistoryPage";
 import PosDetailsPage from "./pages/PosDetailsPage";
 import TransactionDetailsPage from "./pages/TransactionDetailsPage";
+import LoginPage from "./pages/LoginPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
+          <Route path="/login" exact element={<LoginPage />} />
           <Route path="/" exact element={<HomePage />} />
           <Route path="/pos" exact element={<PosPage />} />
           <Route path="/pos/:id" element={<PosDetailsPage />} />
@@ -23,6 +26,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

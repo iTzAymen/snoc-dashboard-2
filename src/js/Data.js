@@ -92,34 +92,46 @@ export async function getChartData({ day, month, year }) {
   const { data } = await axios.get(
     `https://snoc-server.onrender.com/api/transaction?${queryParam}`
   );
+  console.log(`received charts ${queryParam} data`);
   return data;
 }
 
-export async function getProfilePicture(username) {
+export async function getPosChartData(id, date) {
+  console.log(`getting pos ${id} chart data`);
+  const { day, month, year } = date;
+  const queryParam = `${day != "Days" ? `day=${day}&` : ""}${
+    month != "Months" ? `month=${months.indexOf(month) + 1}&` : ""
+  }${`year=${year}`}`;
+  console.log(`getting charts ${queryParam} data`);
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/transaction?${queryParam}`
+    `https://snoc-server.onrender.com/api/pos/${id}?${queryParam}`
   );
+
+  console.log(`received pos ${id} chart data`);
   return data;
 }
 
 export async function getPosRange(start, end) {
+  console.log(`getting pos range ${start}-${end} chart data`);
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/pos?range=${start}-${end - 1}`
+    `https://snoc-server.onrender.com/api/pos?range=${start}-${end}`
   );
   const result = data.map((item) => {
     return {
       name: item.nom_pdv,
       id: item.code_pdv,
       wilaya: item.wilaya_pdv,
-      count: 0,
+      count: item.count,
     };
   });
+  console.log(`received pos range ${start}-${end} chart data`);
   return result;
 }
 
 export async function getTransactionRange(start, end) {
+  console.log(`getting transactions range ${start}-${end} chart data`);
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/transaction?range=${start}-${end - 1}`
+    `https://snoc-server.onrender.com/api/transaction?range=${start}-${end}`
   );
   const result = data.map((item) => {
     return {
@@ -130,6 +142,7 @@ export async function getTransactionRange(start, end) {
       status: item.description,
     };
   });
+  console.log(`received transactions range ${start}-${end} chart data`);
   return result;
 }
 
@@ -138,11 +151,13 @@ export async function getTransactionById(id) {
   const { data } = await axios.get(
     `https://snoc-server.onrender.com/api/transaction/${id}`
   );
+  console.log(data);
   const keys = Object.keys(data[0]);
   const values = Object.values(data[0]);
   const result = keys.map((key, index) => {
     return [key, values[index]];
   });
+  console.log(`received transaction ${id} data`);
   return result;
 }
 
@@ -154,13 +169,13 @@ export async function getPosById(id) {
   const keys = Object.keys(data[0]);
   const values = Object.values(data[0]);
   const pos_info = keys.map((key, index) => {
-    if (key == "snoc2") {
+    if (key == "snoc") {
       return;
     }
     return [key, values[index]];
   });
 
-  const pos_transactions = data[0]["snoc2"].map((item) => {
+  const pos_transactions = data[0]["snoc"].map((item) => {
     return {
       id: item.transaction_id,
       posid: data[0].code_pdv,
@@ -169,5 +184,6 @@ export async function getPosById(id) {
       status: item.description,
     };
   });
+  console.log(`received pos ${id} data`);
   return { pos_info, pos_transactions };
 }

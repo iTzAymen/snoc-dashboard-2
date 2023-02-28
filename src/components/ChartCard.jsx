@@ -1,47 +1,74 @@
 import { BarChart, LineChart, PieChart } from "./Charts";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Heatmap from "./Heatmap";
 import { useEffect, useState } from "react";
 import DateInput from "./DateInput";
-import { getChartData } from "../js/Data";
-import { HoursData, DaysData, MonthsData } from "../js/DataToChartData";
+import { getChartData, getPosChartData } from "../js/Data";
+import {
+  HoursData,
+  DaysData,
+  MonthsData,
+  PosHoursData,
+  PosDaysData,
+  PosMonthsData,
+} from "../js/DataToChartData";
+import { Spinner } from "../assets/icons";
 
-const dummyChartData = {
-  data: [
-    { year: 2, count: 12211 },
-    { year: 1, count: 26806 },
-  ],
-};
-
-export function TransactionTrendCard({ className, label, height, children }) {
+export function TransactionTrendCard({
+  posid,
+  className,
+  label,
+  height,
+  children,
+}) {
   const currentYear = new Date().getFullYear();
   const [date, setDate] = useState({
     day: "Days",
     month: "Months",
     year: currentYear,
   });
-  const [chartData, setChartData] = useState(MonthsData(dummyChartData.data));
+  const [chartData, setChartData] = useState(MonthsData([]));
   const updateDate = (dateUpdates) => {
     const newDate = { ...date, ...dateUpdates };
     setDate(newDate);
-    getChartData(newDate).then((res) => {
-      if (res.data) {
-        if (newDate.month == "Months") {
-          setChartData(MonthsData(res.data));
-        } else if (newDate.day == "Days") {
-          setChartData(DaysData(res.data));
-        } else {
-          setChartData(HoursData(res.data));
+    if (posid) {
+      getPosChartData(posid, newDate).then((res) => {
+        if (res.data) {
+          if (newDate.month == "Months") {
+            setChartData(PosMonthsData(res.data));
+          } else if (newDate.day == "Days") {
+            setChartData(PosDaysData(res.data));
+          } else {
+            setChartData(PosHoursData(res.data));
+          }
         }
-      }
-    });
+      });
+    } else {
+      getChartData(newDate).then((res) => {
+        if (res.data) {
+          if (newDate.month == "Months") {
+            setChartData(MonthsData(res.data));
+          } else if (newDate.day == "Days") {
+            setChartData(DaysData(res.data));
+          } else {
+            setChartData(HoursData(res.data));
+          }
+        }
+      });
+    }
   };
+  useEffect(() => {
+    updateDate({
+      day: "Days",
+      month: "Months",
+      year: currentYear,
+    });
+  }, []);
   className = className ? className : "";
   return (
     <div
       className={
         className +
-        " bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all"
+        " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
       <div className="flex justify-between mb-4">
@@ -54,7 +81,10 @@ export function TransactionTrendCard({ className, label, height, children }) {
         </h1>
         <DateInput updateDate={updateDate} date={date} />
       </div>
-      <LineChart dataset={chartData} label={label} height={height} />
+      {chartData && (
+        <LineChart dataset={chartData} label={label} height={height} />
+      )}
+      {!chartData && <Spinner />}
     </div>
   );
 }
@@ -67,16 +97,12 @@ export function ChartCard({
   height,
   children,
 }) {
-  if (!dataset) {
-    return;
-  }
-
   className = className ? className : "";
   return (
     <div
       className={
         className +
-        " bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all"
+        " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
       <div className="flex justify-between mb-4">
@@ -88,15 +114,16 @@ export function ChartCard({
           {children}
         </h1>
       </div>
-      {type == "bar" && (
+      {dataset && type == "bar" && (
         <BarChart dataset={dataset} label={label} height={height} />
       )}
-      {type == "line" && (
+      {dataset && type == "line" && (
         <LineChart dataset={dataset} label={label} height={height} />
       )}
-      {type == "pie" && (
+      {dataset && type == "pie" && (
         <PieChart dataset={dataset} label={label} height={height} />
       )}
+      {!dataset && <Spinner size="h-[4rem]" />}
     </div>
   );
 }
@@ -107,13 +134,18 @@ export function MapCard({ city_data, className, height, children }) {
     <div
       className={
         className +
-        " bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-dark shadow-lg hover:shadow-xl transition-all"
+        " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-dark shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
       <h1 className="text-xl font-semibold mb-2 truncate text-zinc-200">
         {children}
       </h1>
-      <Heatmap city_data={city_data} height={height} />
+      {city_data && <Heatmap city_data={city_data} height={height} />}
+      {!city_data && (
+        <div className={`flex grow`} style={{ height: height }}>
+          <Spinner size="h-[4rem]" />
+        </div>
+      )}
     </div>
   );
 }

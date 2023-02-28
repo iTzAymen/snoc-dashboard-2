@@ -3,8 +3,8 @@ import { ChartCard, MapCard, TransactionTrendCard } from "./ChartCard";
 import PosCard from "./PosCard";
 
 export default function ChartsContent({ cardsData }) {
-  const offer_data = OfferData(cardsData[3]);
-  const city_data = CityData(cardsData[2]);
+  const offer_data = cardsData ? OfferData(cardsData[3]) : null;
+  const city_data = cardsData ? CityData(cardsData[2]) : null;
   return (
     <div
       id="charts"

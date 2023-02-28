@@ -42,6 +42,41 @@
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500;
   }
 
+  .thin-zinc-border {
+    @apply border-zinc-700 border-opacity-50 border;
+  }
+
+  .logo-full {
+    stroke-dashoffset: 1155;
+    animation: logoload 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  }
+
+  @keyframes logoload {
+    0% {
+      stroke-dashoffset: 1155;
+      stroke-width: 12px;
+    }
+    50% {
+      stroke-dashoffset: 0;
+      stroke-width: 4px;
+    }
+    100% {
+      stroke-dashoffset: -1155;
+      stroke-width: 12px;
+    }
+  }
+
+  .logo-empty {
+    stroke-dashoffset: 0;
+  }
+
+  .min-screen-height {
+    /* 96px navbar height */
+    /* 100px footer height */
+    /* 16px main top margin */
+    min-height: calc(100vh - 96px - 100px - 16px);
+  }
+
   @media only screen and (max-width: theme(screens.md)) {
     .responsive-nav {
       @apply flex flex-col align-middle gap-5;

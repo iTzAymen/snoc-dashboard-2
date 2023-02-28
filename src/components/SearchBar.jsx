@@ -10,17 +10,17 @@ export default function SearchBar({
       <div className="flex grow relative align-middle">
         <input
           placeholder={searchType ? searchTypeText[0] : searchTypeText[1]}
-          className="bg-zinc-900 rounded-lg grow p-2 focus-zinc placeholder:text-zinc-500"
+          className="bg-zinc-900 rounded-lg grow p-2 focus-zinc placeholder:text-zinc-500 thin-zinc-border"
         ></input>
         {searchType != undefined && (
           <button
             onClick={() => {
               setSearchType(!searchType);
             }}
-            className={`focus-zinc absolute right-2 cursor-pointer top-1/2 -translate-y-1/2 bg-opacity-25 rounded-md ${
+            className={`focus-zinc absolute right-2 cursor-pointer top-1/2 -translate-y-1/2 bg-opacity-25 rounded-md thin-zinc-border ${
               searchType
-                ? "hover:bg-zinc-700 hover:bg-opacity-50 bg-zinc-800"
-                : "hover:bg-rose-800 hover:bg-opacity-50 bg-rose-700"
+                ? "hover:bg-zinc-900 hover:bg-opacity-50 bg-zinc-800"
+                : "hover:bg-zinc-600 hover:bg-opacity-50 bg-zinc-400"
             }`}
           >
             <SwitchIcon className="text-zinc-100 box-content p-1" />

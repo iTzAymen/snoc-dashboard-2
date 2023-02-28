@@ -134,7 +134,7 @@ export function LineChart({ dataset, label, height }) {
   };
 
   return (
-    <div>
+    <div className="my-auto">
       <Line data={chartData} height={height} options={options} />
     </div>
   );
