@@ -43,7 +43,7 @@ export default function TransactionsSearchList({ data, className }) {
             <p className=" hidden sm:block w-1/5 text-center capitalize truncate">
               {transaction_data.date.replace("T", " ")}
             </p>
-            <div className="min-w-[55px] md:w-1/6 text-right capitalize flex justify-end">
+            <div className="min-w-fit w-[55px] md:w-1/6 text-right capitalize flex justify-end">
               <div className="truncate hidden md:inline-block">
                 {transaction_data.status}
               </div>

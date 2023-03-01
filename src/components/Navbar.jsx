@@ -3,6 +3,7 @@ import logo from "../assets/djezzy.svg";
 import { MenuIcon } from "../assets/icons";
 import ProfileBtn, { ProfileCard } from "./ProfileBtn";
 import { useEffect, useRef, useState } from "react";
+import { Logout } from "../js/Login";
 
 function Logo({ className }) {
   return (
@@ -104,7 +105,7 @@ export default function Navbar() {
           </a>
           {window_width > 650 && (
             <li id="profile-btn" className="nav-menu-button">
-              <ProfileBtn>User</ProfileBtn>
+              <ProfileBtn>Profile</ProfileBtn>
             </li>
           )}
 
@@ -113,7 +114,10 @@ export default function Navbar() {
               <button className="mx-6 p-3 rounded-lg border-2 border-zinc-500 text-zinc-500 hover:border-zinc-50 hover:text-zinc-50">
                 Settings
               </button>
-              <button className="mx-6 p-3 rounded-lg border-2 border-rose-900 text-rose-900 hover:bg-rose-900 hover:text-white hover:bg-opacity-50">
+              <button
+                onClick={Logout}
+                className="mx-6 p-3 rounded-lg border-2 border-rose-900 text-rose-900 hover:bg-rose-900 hover:text-white hover:bg-opacity-50"
+              >
                 Sign out
               </button>
             </div>
