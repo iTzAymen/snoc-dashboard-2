@@ -1,70 +1,18 @@
 import axios from "axios";
-
-let fetching = false;
-export default function getData() {
-  if (fetching == true) {
-    return;
-  }
-
-  console.log("getting data");
-  fetching = true;
-  const token = localStorage.getItem("token");
-  const config = {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  };
-  axios
-    .get(
-      "https://snoc-dashboard-api.onrender.com/api/v1/transactions/overview",
-      config
-    )
-    .then((res) => {
-      if (res.data.success) {
-        const data = res.data.data;
-        localStorage.setItem("data", JSON.stringify(data));
-        console.log("data received");
-        fetching = false;
-      }
-    })
-    .catch((err) => {
-      console.log("error occured");
-      fetching = false;
-    });
-}
-
-export async function getDataAsync() {
-  const token = localStorage.getItem("token");
-  const config = {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  };
-  const { data } = await axios.get(
-    "https://snoc-dashboard-api.onrender.com/api/v1/transactions/overview",
-    config
-  );
-  return data;
-}
-
-export async function getPosData(id) {
-  console.log(`getting pos ${id} data`);
-  const token = localStorage.getItem("token");
-  const config = {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  };
-  const { data } = await axios.get(
-    "https://snoc-dashboard-api.onrender.com/api/v1/transactions/overview",
-    config
-  );
-  return data;
-}
+import { getToken } from "./Login";
 
 export async function getCardsData() {
   console.log("getting cards data");
-  const { data } = await axios.get("https://snoc-server.onrender.com/api/info");
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.get(
+    "https://snoc-server.onrender.com/api/info",
+    config
+  );
   console.log("received cards data");
   return data;
 }
@@ -89,8 +37,15 @@ export async function getChartData({ day, month, year }) {
     month != "Months" ? `month=${months.indexOf(month) + 1}&` : ""
   }${`year=${year}`}`;
   console.log(`getting charts ${queryParam} data`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/transaction?${queryParam}`
+    `https://snoc-server.onrender.com/api/transaction?${queryParam}`,
+    config
   );
   console.log(`received charts ${queryParam} data`);
   return data;
@@ -103,8 +58,15 @@ export async function getPosChartData(id, date) {
     month != "Months" ? `month=${months.indexOf(month) + 1}&` : ""
   }${`year=${year}`}`;
   console.log(`getting charts ${queryParam} data`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/pos/${id}?${queryParam}`
+    `https://snoc-server.onrender.com/api/pos/${id}?${queryParam}`,
+    config
   );
 
   console.log(`received pos ${id} chart data`);
@@ -113,8 +75,15 @@ export async function getPosChartData(id, date) {
 
 export async function getPosRange(start, end) {
   console.log(`getting pos range ${start}-${end} chart data`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/pos?range=${start}-${end}`
+    `https://snoc-server.onrender.com/api/pos?range=${start}-${end}`,
+    config
   );
   const result = data.map((item) => {
     return {
@@ -130,8 +99,17 @@ export async function getPosRange(start, end) {
 
 export async function getTransactionRange(start, end) {
   console.log(`getting transactions range ${start}-${end} chart data`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/transaction?range=${start}-${end}`
+    `https://snoc-server.onrender.com/api/transaction?range=${start}-${
+      end - 1
+    }`,
+    config
   );
   const result = data.map((item) => {
     return {
@@ -148,8 +126,15 @@ export async function getTransactionRange(start, end) {
 
 export async function getTransactionById(id) {
   console.log(`getting transaction ${id} data`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/transaction/${id}`
+    `https://snoc-server.onrender.com/api/transaction/${id}`,
+    config
   );
   console.log(data);
   const keys = Object.keys(data[0]);
@@ -161,11 +146,19 @@ export async function getTransactionById(id) {
   return result;
 }
 
-export async function getPosById(id) {
+export async function getPosById(id, start, end) {
   console.log(`getting pos ${id} data`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   const { data } = await axios.get(
-    `https://snoc-server.onrender.com/api/pos/${id}`
+    `https://snoc-server.onrender.com/api/pos/${id}?range=${start}-${end - 1}`,
+    config
   );
+  console.log(data);
   const keys = Object.keys(data[0]);
   const values = Object.values(data[0]);
   const pos_info = keys.map((key, index) => {
@@ -186,4 +179,103 @@ export async function getPosById(id) {
   });
   console.log(`received pos ${id} data`);
   return { pos_info, pos_transactions };
+}
+
+export async function searchTransactionbyId(type, id, start, end) {
+  console.log(`getting transactions search ${id} ${start}-${end}`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.get(
+    `https://snoc-server.onrender.com/api/transaction/search/${
+      type ? "tra_id" : "pos_id"
+    }/${id}?range=${start}-${end - 1}`,
+    config
+  );
+  const result = data.map((item) => {
+    return {
+      id: item.transaction_id,
+      posid: item.code_pdv,
+      type: item.type_transaction,
+      date: item.date_derniere_modification,
+      status: item.description,
+    };
+  });
+  console.log(`received transactions search ${id} ${start}-${end}`);
+  return result;
+}
+
+export async function getTransactionsSearchSuggestions(type, id) {
+  console.log(`getting transactions suggestions ${id}`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.get(
+    `https://snoc-server.onrender.com/api/transaction/searching/${
+      type ? "tra_id" : "pos_id"
+    }/${id}`,
+    config
+  );
+  const result = data.map((item) => {
+    return {
+      id: type ? item.transaction_id : item.code_pdv,
+    };
+  });
+  console.log(`received transactions search ${id}`);
+  return result;
+}
+
+export async function searchPosbyId(type, id, start, end) {
+  console.log(`getting transactions search ${id} ${start}-${end}`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.get(
+    `https://snoc-server.onrender.com/api/pos/search/${
+      type ? "pos_id" : "pos_name"
+    }/${id}?range=${start}-${end - 1}`,
+    config
+  );
+  const result = data.map((item) => {
+    return {
+      name: item.nom_pdv,
+      id: item.code_pdv,
+      wilaya: item.wilaya_pdv,
+      count: item.count,
+    };
+  });
+  console.log(`received pos search ${id} ${start}-${end}`);
+  return result;
+}
+
+export async function getPosSearchSuggestions(type, id) {
+  console.log(`getting pos suggestions ${id}`);
+  const token = getToken();
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.get(
+    `https://snoc-server.onrender.com/api/pos/searching/${
+      type ? "pos_id" : "pos_name"
+    }/${id}`,
+    config
+  );
+  const result = data.map((item) => {
+    return {
+      id: type ? item.code_pdv : item.nom_pdv,
+    };
+  });
+  console.log(`received pos search ${id}`);
+  return result;
 }

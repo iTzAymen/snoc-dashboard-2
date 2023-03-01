@@ -7,6 +7,7 @@ import PosDetailsPage from "./pages/PosDetailsPage";
 import TransactionDetailsPage from "./pages/TransactionDetailsPage";
 import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   return (
@@ -15,14 +16,49 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" exact element={<LoginPage />} />
-          <Route path="/" exact element={<HomePage />} />
-          <Route path="/pos" exact element={<PosPage />} />
-          <Route path="/pos/:id" element={<PosDetailsPage />} />
-          <Route path="/history" exact element={<HistoryPage />} />
+          <Route
+            path="/"
+            exact
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/pos"
+            exact
+            element={
+              <ProtectedRoute>
+                <PosPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/pos/:id"
+            element={
+              <ProtectedRoute>
+                <PosDetailsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/history"
+            exact
+            element={
+              <ProtectedRoute>
+                <HistoryPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/transaction/:id"
             exact
-            element={<TransactionDetailsPage />}
+            element={
+              <ProtectedRoute>
+                <TransactionDetailsPage />
+              </ProtectedRoute>
+            }
           />
         </Routes>
       </BrowserRouter>

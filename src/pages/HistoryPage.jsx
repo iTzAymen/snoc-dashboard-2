@@ -1,22 +1,64 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import TransactionsSearchList from "../components/TransactionsSearchList";
 import SearchBar from "../components/SearchBar";
-import { getTransactionRange } from "../js/Data";
+import {
+  getTransactionsSearchSuggestions,
+  getTransactionRange,
+  searchTransactionbyId,
+} from "../js/Data";
 import { Spinner } from "../assets/icons";
 let page = 0;
 export default function HistoryPage() {
   const [searchType, setSearchType] = useState(true);
+  const [suggestions, setSuggestions] = useState(null);
   const [data, setData] = useState([]);
   const [debounce, setDebounce] = useState(false);
+  const searchbarInputRef = useRef();
+
+  const getSuggestions = () => {
+    setSuggestions(null);
+    getTransactionsSearchSuggestions(
+      searchType,
+      searchbarInputRef.current.value
+    ).then((res) => {
+      setSuggestions(res);
+    });
+  };
+
   const getPage = () => {
     if (debounce == true) {
       return;
     }
     setDebounce(true);
-    getTransactionRange(page * 10, (page + 1) * 10).then((res) => {
-      page++;
+    searchTransactionbyId(
+      searchType,
+      searchbarInputRef.current.value,
+      page * 10,
+      (page + 1) * 10
+    ).then((res) => {
       setDebounce(false);
-      setData([...data, ...res]);
+      if (res.length >= 0) {
+        page++;
+        setData([...data, ...res]);
+      }
+    });
+  };
+
+  const searchPage = () => {
+    if (debounce == true) {
+      return;
+    }
+    setDebounce(true);
+    setSuggestions(null);
+    searchTransactionbyId(
+      searchType,
+      searchbarInputRef.current.value,
+      0,
+      10
+    ).then((res) => {
+      setDebounce(false);
+      page = 1;
+      setData([...res]);
     });
   };
 
@@ -33,15 +75,21 @@ export default function HistoryPage() {
             History
           </h1>
           <p className="text-lg font-medium text-zinc-400">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum
-            deserunt rem voluptatem quis quam eveniet inventore in ut nam
-            dignissimos?
+            This page shows a history of transactions processed by the system.
+            You can search for transactions by ID or by Pos ID . you can view
+            information about the POS ID, transaction type, date, and their
+            status. Use the "Load more" button to view additional transaction
+            history.
           </p>
         </div>
         <div id="content">
           <SearchBar
+            searchbarInputRef={searchbarInputRef}
             searchType={searchType}
             setSearchType={setSearchType}
+            onClick={searchPage}
+            suggestions={suggestions}
+            getSuggestions={getSuggestions}
             searchTypeText={["Search by Transaction ID", "Search by POS ID"]}
           />
           <div className="mt-4 col-span-3 bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
@@ -52,13 +100,12 @@ export default function HistoryPage() {
             <button
               onClick={getPage}
               disabled={debounce}
-              className={`w-full bg-zinc-700 border-zinc-600  ${
-                debounce
-                  ? "text-zinc-800 font-semibold"
-                  : "hover:bg-rose-900 hover:border-rose-500 hover:-translate-y-1 cursor-pointer"
-              } border rounded-lg py-2 px-2 transition-all focus-zinc`}
+              className={`w-full bg-zinc-700 border-zinc-600 hover:bg-rose-900 hover:border-rose-500 ${
+                debounce ? "pointer-events-none" : ""
+              } hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all focus-zinc`}
             >
-              {debounce ? "Loading..." : "Load more"}
+              {debounce && <Spinner className="" size="h-[24px]" />}
+              {!debounce && "Load more"}
             </button>
           </div>
         </div>

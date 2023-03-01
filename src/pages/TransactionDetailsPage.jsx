@@ -20,18 +20,19 @@ export default function TransactionDetailsPage() {
             Transaction Details
           </h1>
           <p className="text-lg font-medium text-zinc-400">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum
-            deserunt rem voluptatem quis quam eveniet inventore in ut nam
-            dignissimos?
+            This page displays transaction details for a specific Transaction
+            ID. It includes information such as the point of sale ID, customer's
+            phone number, transaction status, and product details. There are
+            also fields for customer information and activation documents.
           </p>
         </div>
         <div id="content">
           <div className="w-full gap-y-4 lg:gap-4">
             <div className="flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
-              <h1 className="text-xl font-semibold truncate text-zinc-200 inline-block">
+              <h1 className="text-xl font-semibold truncate text-zinc-200 inline-block mb-2 pb-2 border-b border-zinc-800 w-full">
                 Information
               </h1>
-              <div className="w-full grow flex flex-col py-4">
+              <div className="w-full grow flex flex-col">
                 {data &&
                   data.map((key, idx) => {
                     if (key[0] == "code_pdv") {

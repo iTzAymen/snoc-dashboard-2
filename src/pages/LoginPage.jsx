@@ -1,24 +1,37 @@
 import { useEffect, useRef, useState } from "react";
 import { Login } from "../js/Login";
+import { Eye, EyeSlash, Spinner } from "../assets/icons";
 
 export default function LoginPage() {
   const [error, setError] = useState(false);
-  const emailRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const usernameRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const updateInfo = () => {
-    const email_val = emailRef.current.value;
+  const updateInfo = (e) => {
+    e.preventDefault();
+    if (loading) {
+      return;
+    }
+    setError(false);
+    setLoading(true);
+    const username_val = usernameRef.current.value;
     const password_val = passwordRef.current.value;
-    Login(email_val, password_val).then((res) => {
-      console.log(res);
-      //   window.location.href = "/";
+    Login(username_val, password_val).then((res) => {
+      setLoading(false);
+      if (res) {
+        window.location.href = "/";
+      } else {
+        setError(true);
+      }
     });
   };
 
   return (
     <div className="overflow-hidden relative bg-zinc-900">
       <main className="md:container p-4 md:mt-4 min-screen-height flex flex-col">
-        <div className=" thin-zinc-border bg-zinc-900 shadow-2xl z-20 rounded-xl w-full xs:min-w-[24rem] xs:w-1/3 mx-auto my-auto p-6 flex flex-col align-middle gap-6">
+        <form className=" thin-zinc-border bg-zinc-900 shadow-2xl z-20 rounded-xl w-full xs:min-w-[24rem] xs:w-1/3 mx-auto my-auto p-6 flex flex-col align-middle gap-6">
           <div id="description" className="">
             <h1 className=" mb-2 text-3xl font-semibold text-zinc-200">
               Sign in
@@ -26,29 +39,56 @@ export default function LoginPage() {
           </div>
           <div>
             <input
-              ref={emailRef}
-              placeholder="Email"
+              name="username"
+              required
+              type="text"
+              ref={usernameRef}
+              placeholder="Username"
               className="bg-zinc-900 w-full rounded-lg p-3 focus-zinc placeholder:text-zinc-500 thin-zinc-border hover:border-zinc-500"
             ></input>
           </div>
           <div>
-            <input
-              ref={passwordRef}
-              placeholder="Password"
-              className="bg-zinc-900 w-full rounded-lg p-3 focus-zinc placeholder:text-zinc-500 thin-zinc-border hover:border-zinc-500"
-            ></input>
+            <div className="relative ">
+              <input
+                name="password"
+                required
+                type={showPassword ? "text" : "password"}
+                ref={passwordRef}
+                placeholder="Password"
+                className="bg-zinc-900 w-full rounded-lg p-3 focus-zinc placeholder:text-zinc-500 thin-zinc-border hover:border-zinc-500 peer-hover:border-zinc-500"
+              ></input>
+              {showPassword && (
+                <EyeSlash
+                  onClick={() => {
+                    setShowPassword(false);
+                  }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 cursor-pointer peer"
+                />
+              )}
+              {!showPassword && (
+                <Eye
+                  onClick={() => {
+                    setShowPassword(true);
+                  }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 cursor-pointer peer"
+                />
+              )}
+            </div>
             <p className="text-sm mt-2 font-medium cursor-pointer hover:text-rose-800 underline">
               Forgot password?
             </p>
           </div>
           <p className={`text-sm text-red-700 -mt-2 ${error ? "" : "hidden"}`}>
-            Email or Password incorrect, please try again
+            Username or Password incorrect, please try again
           </p>
           <button
             onClick={updateInfo}
-            className="bg-zinc-700 border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-500 rounded-lg px-4 py-3 focus-zinc transition-all"
+            className={`bg-zinc-700 border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-500 rounded-lg px-4 py-3 focus-zinc transition-all ${
+              loading ? "pointer-events-none" : ""
+            }`}
           >
-            Login
+            {loading && <Spinner className="" size="h-[24px]" />}
+            {!loading && "Login"}
           </button>
           <div className=" h-1 w-full border-t border-zinc-800"></div>
           <p className="text-sm text-white -mt-2">
@@ -57,10 +97,10 @@ export default function LoginPage() {
               Request an account now
             </span>
           </p>
-        </div>
+        </form>
       </main>
       <StockBackground
-        className="absolute left-0 top-0 w-[1440px] xl:w-full z-0 aspect-video asp"
+        className="absolute left-0 top-0 w-[1440px] xl:w-full z-0 aspect-video"
         color="#be123c80"
       />
     </div>
@@ -76,7 +116,7 @@ function StockBackground({ className, color }) {
       xmlnssvgjs="http://svgjs.com/svgjs"
       width="1440"
       height="810"
-      preserveAspectRatio="none"
+      // preserveAspectRatio="none"
       viewBox="0 0 1440 810"
       className={className}
     >

@@ -20,7 +20,7 @@ export default function PosCard({ className, children }) {
         " bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-dark shadow-lg hover:shadow-xl transition-all flex flex-col thin-zinc-border"
       }
     >
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-800">
         <h1
           className={
             "text-xl font-semibold truncate text-zinc-200 inline-block"

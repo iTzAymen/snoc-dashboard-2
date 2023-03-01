@@ -71,7 +71,7 @@ export function TransactionTrendCard({
         " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-800">
         <h1
           className={
             "text-xl font-semibold truncate text-zinc-200 inline-block"
@@ -105,7 +105,7 @@ export function ChartCard({
         " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-800">
         <h1
           className={
             "text-xl font-semibold truncate text-zinc-200 inline-block"
@@ -137,7 +137,7 @@ export function MapCard({ city_data, className, height, children }) {
         " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-dark shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
-      <h1 className="text-xl font-semibold mb-2 truncate text-zinc-200">
+      <h1 className="text-xl font-semibold truncate text-zinc-200 mb-2 pb-2 border-b border-zinc-800">
         {children}
       </h1>
       {city_data && <Heatmap city_data={city_data} height={height} />}

@@ -4,11 +4,35 @@ export default function SearchBar({
   searchType,
   setSearchType,
   searchTypeText,
+  onClick,
+  searchbarInputRef,
+  suggestions,
+  getSuggestions,
 }) {
+  function toggleSuggestions(val) {
+    const hiddenDiv = document.querySelector(".search-suggestions");
+    if (hiddenDiv) {
+      if (val) {
+        hiddenDiv.classList.remove("hidden");
+      } else {
+        setTimeout(() => {
+          hiddenDiv.classList.add("hidden");
+        }, 100);
+      }
+    }
+  }
   return (
     <div className="flex gap-4">
       <div className="flex grow relative align-middle">
         <input
+          onBlur={() => {
+            toggleSuggestions(false);
+          }}
+          onFocus={() => {
+            toggleSuggestions(true);
+          }}
+          onChange={getSuggestions}
+          ref={searchbarInputRef}
           placeholder={searchType ? searchTypeText[0] : searchTypeText[1]}
           className="bg-zinc-900 rounded-lg grow p-2 focus-zinc placeholder:text-zinc-500 thin-zinc-border"
         ></input>
@@ -26,8 +50,28 @@ export default function SearchBar({
             <SwitchIcon className="text-zinc-100 box-content p-1" />
           </button>
         )}
+        {suggestions && suggestions.length > 0 && (
+          <div className="search-suggestions z-40 absolute w-full top-full bg-zinc-100 rounded-lg py-2 thin-zinc-border shadow-lg">
+            {suggestions.map((item, index) => (
+              <div
+                key={index}
+                className="py-2 px-4 hover:bg-zinc-200 text-dark border-b border-zinc-200 border-opacity-50 cursor-pointer"
+                onClick={() => {
+                  console.log("clicked");
+                  searchbarInputRef.current.value = item.id;
+                  onClick();
+                }}
+              >
+                {item.id}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-      <button className="bg-zinc-700 border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-500 rounded-lg px-4 py-2 focus-zinc transition-all">
+      <button
+        onClick={onClick}
+        className="bg-zinc-700 border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-500 rounded-lg px-4 py-2 focus-zinc transition-all"
+      >
         Search
       </button>
     </div>

@@ -4,7 +4,7 @@ export default function Footer() {
       <p className="mb-4 text-sm text-center text-zinc-500 dark:text-zinc-400 sm:mb-0">
         &copy; 2022-2023{" "}
         <a
-          href="https://flowbite.com/"
+          href="https://www.djezzy.dz"
           className="hover:underline"
           target="_blank"
         >
@@ -14,7 +14,8 @@ export default function Footer() {
       </p>
       <div className="flex justify-center items-center space-x-1">
         <a
-          href="#"
+          target="_blank"
+          href="https://www.facebook.com/djezzy"
           data-tooltip-target="tooltip-facebook"
           className="inline-flex justify-center p-2 text-zinc-500 rounded-lg cursor-pointer dark:text-zinc-400 dark:hover:text-white hover:text-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-600"
         >
@@ -41,7 +42,8 @@ export default function Footer() {
           <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
         <a
-          href="#"
+          target="_blank"
+          href="https://twitter.com/djezzy"
           data-tooltip-target="tooltip-twitter"
           className="inline-flex justify-center p-2 text-zinc-500 rounded-lg cursor-pointer dark:text-zinc-400 dark:hover:text-white hover:text-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-600"
         >
@@ -64,57 +66,59 @@ export default function Footer() {
           <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
         <a
-          href="#"
-          data-tooltip-target="tooltip-github"
+          target="_blank"
+          href="https://www.youtube.com/user/djezzytube"
+          data-tooltip-target="tooltip-youtube"
           className="inline-flex justify-center p-2 text-zinc-500 rounded-lg cursor-pointer dark:text-zinc-400 dark:hover:text-white hover:text-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-600"
         >
           <svg
-            aria-hidden="true"
             className="w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fab"
+            data-icon="youtube"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512"
           >
             <path
-              fillRule="evenodd"
-              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-              clipRule="evenodd"
-            />
+              fill="currentColor"
+              d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+            ></path>
           </svg>
-          <span className="sr-only">Github</span>
+          <span className="sr-only">Youtube</span>
         </a>
         <div
-          id="tooltip-github"
+          id="tooltip-youtube"
           role="tooltip"
           className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-zinc-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-zinc-700"
         >
-          Star us on GitHub
+          Subscribe to us on Youtube
           <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
         <a
-          href="#"
-          data-tooltip-target="tooltip-dribbble"
+          target="_blank"
+          href="https://www.linkedin.com/company/djezzy"
+          data-tooltip-target="tooltip-linkedin"
           className="inline-flex justify-center p-2 text-zinc-500 rounded-lg cursor-pointer dark:text-zinc-400 dark:hover:text-white hover:text-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-600"
         >
           <svg
             aria-hidden="true"
             className="w-5 h-5"
             fill="currentColor"
-            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 30 30"
           >
-            <path
-              fillRule="evenodd"
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
-              clipRule="evenodd"
-            />
+            <path d="M9,25H4V10h5V25z M6.501,8C5.118,8,4,6.879,4,5.499S5.12,3,6.501,3C7.879,3,9,4.121,9,5.499C9,6.879,7.879,8,6.501,8z M27,25h-4.807v-7.3c0-1.741-0.033-3.98-2.499-3.98c-2.503,0-2.888,1.896-2.888,3.854V25H12V9.989h4.614v2.051h0.065 c0.642-1.18,2.211-2.424,4.551-2.424c4.87,0,5.77,3.109,5.77,7.151C27,16.767,27,25,27,25z" />
           </svg>
-          <span className="sr-only">Dribbble</span>
+          <span className="sr-only">Linkedin</span>
         </a>
         <div
-          id="tooltip-dribbble"
+          id="tooltip-linkedin"
           role="tooltip"
           className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-zinc-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-zinc-700"
         >
-          Follow us on Dribbble
+          Follow us on Linkedin
           <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
       </div>
