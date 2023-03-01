@@ -1,8 +1,8 @@
 import "../css/App.css";
 import logo from "../assets/djezzy.svg";
 import { MenuIcon } from "../assets/icons";
-import ProfileBtn from "./ProfileBtn";
-import { useEffect, useRef } from "react";
+import ProfileBtn, { ProfileCard } from "./ProfileBtn";
+import { useEffect, useRef, useState } from "react";
 
 function Logo({ className }) {
   return (
@@ -12,6 +12,8 @@ function Logo({ className }) {
 
 export default function Navbar() {
   let navRef = useRef();
+  const [window_width, setWindow_width] = useState(window.innerWidth);
+
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive-nav");
     navRef.current.classList.toggle("hidden");
@@ -38,7 +40,16 @@ export default function Navbar() {
   useEffect(() => {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    function handle_resize() {
+      setWindow_width(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handle_resize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handle_resize);
+    };
   }, []);
 
   if (window.location.href.endsWith("/login")) {
@@ -81,24 +92,32 @@ export default function Navbar() {
           ref={navRef}
           className="nav-menu z-10 hidden md:flex my-auto md:gap-4"
         >
-          <li className="nav-menu-button">
-            <a href="/" className="rounded-lg focus-zinc">
-              Overview
-            </a>
-          </li>
-          <li className="nav-menu-button">
-            <a href="/pos" className="rounded-lg focus-zinc">
-              Points Of Sale
-            </a>
-          </li>
-          <li className="nav-menu-button">
-            <a href="/history" className="rounded-lg focus-zinc">
-              History
-            </a>
-          </li>
-          <li id="profile-btn" className="nav-menu-button">
-            <ProfileBtn>User</ProfileBtn>
-          </li>
+          {window_width <= 650 && <ProfileCard username="Aymen" rank="admin" />}
+          <a href="/" className="nav-menu-button rounded-lg focus-zinc">
+            Overview
+          </a>
+          <a href="/pos" className="nav-menu-button rounded-lg focus-zinc">
+            Points Of Sale
+          </a>
+          <a href="/history" className="nav-menu-button rounded-lg focus-zinc">
+            History
+          </a>
+          {window_width > 650 && (
+            <li id="profile-btn" className="nav-menu-button">
+              <ProfileBtn>User</ProfileBtn>
+            </li>
+          )}
+
+          {window_width <= 650 && (
+            <div className="w-full flex flex-col gap-2 mt-auto">
+              <button className="mx-6 p-3 rounded-lg border-2 border-zinc-500 text-zinc-500 hover:border-zinc-50 hover:text-zinc-50">
+                Settings
+              </button>
+              <button className="mx-6 p-3 rounded-lg border-2 border-rose-900 text-rose-900 hover:bg-rose-900 hover:text-white hover:bg-opacity-50">
+                Sign out
+              </button>
+            </div>
+          )}
         </ul>
       </div>
     </nav>

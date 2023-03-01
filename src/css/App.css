@@ -11,11 +11,11 @@
   }
 
   html::-webkit-scrollbar {
-    @apply w-3 bg-zinc-900 rounded bg-opacity-25;
+    @apply w-3 bg-zinc-900 rounded;
   }
 
   html::-webkit-scrollbar-thumb {
-    @apply bg-zinc-900 rounded;
+    @apply bg-zinc-800 rounded bg-opacity-50;
   }
 
   *,
@@ -105,23 +105,23 @@
     .responsive-nav {
       @apply flex flex-col align-middle gap-5;
       @apply fixed top-0 right-0 h-full w-full;
-      @apply pt-32 pb-6;
+      @apply pt-20 pb-6;
       @apply bg-zinc-900;
     }
 
     .nav-menu-button {
-      @apply text-xl box-border w-11/12 text-center py-3 my-0;
-      @apply rounded-xl;
-      @apply bg-zinc-800 border-zinc-700 border;
-      @apply hover:bg-rose-900 active:bg-rose-800 hover:border-rose-500;
+      @apply text-xl box-border w-full text-center py-3 my-0;
+      @apply rounded-lg;
+      @apply hover:bg-zinc-800;
+      @apply active:bg-rose-900;
     }
 
     #profile-btn {
-      @apply w-11/12 text-center py-0 mt-auto bg-opacity-0 border-0;
+      @apply w-full text-center py-0 mt-auto bg-opacity-0 border-0;
     }
 
     .special-menu-button {
-      @apply w-full h-full mx-0 py-4 hover:bg-zinc-900;
+      @apply w-full h-full mx-0 py-4 hover:bg-zinc-700 rounded-lg border-0;
     }
   }
 }

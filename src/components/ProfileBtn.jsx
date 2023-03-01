@@ -63,7 +63,7 @@ function MenuItem({ children, Icon, onClick }) {
   );
 }
 
-function ProfileCard({ username, rank }) {
+export function ProfileCard({ username, rank }) {
   return (
     <div className="h-44 p-2 gap-2 flex flex-col align-baseline overflow-hidden">
       <img

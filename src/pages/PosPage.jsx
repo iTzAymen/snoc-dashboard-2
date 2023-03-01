@@ -71,13 +71,6 @@ export default function PosPage() {
           <h1 className=" mb-2 text-5xl font-semibold text-zinc-200">
             Points of Sale
           </h1>
-          <p className="text-lg font-medium text-zinc-400">
-            This page displays a list of Points of Sale (POS) and their
-            transaction volumes. You can search for a specific POS by ID or
-            Name. you can view the top 10 performing POS by transaction volume.
-            Each POS includes its name, ID, associated wilaya, and total
-            transaction count.
-          </p>
         </div>
         <div id="content">
           <SearchBar

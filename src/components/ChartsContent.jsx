@@ -16,7 +16,6 @@ export default function ChartsContent({ cardsData }) {
       setWindow_width(
         Math.min(700, Math.max(350, 1.4 * window.innerWidth - 280))
       );
-      console.log(window_width);
     }
 
     window.addEventListener("resize", handle_resize);

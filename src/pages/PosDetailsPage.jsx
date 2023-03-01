@@ -39,10 +39,6 @@ export default function PosDetailsPage() {
           <h1 className=" mb-2 text-5xl font-semibold text-zinc-200">
             POS Details
           </h1>
-          <p className="text-lg font-medium text-zinc-400">
-            Here, you can find all the relevant information about your point of
-            sale and a list of your transactions.
-          </p>
         </div>
         <div id="content">
           <div className="grid w-full grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-4">

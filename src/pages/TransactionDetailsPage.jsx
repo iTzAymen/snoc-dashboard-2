@@ -19,12 +19,6 @@ export default function TransactionDetailsPage() {
           <h1 className=" mb-2 text-5xl font-semibold text-zinc-200">
             Transaction Details
           </h1>
-          <p className="text-lg font-medium text-zinc-400">
-            This page displays transaction details for a specific Transaction
-            ID. It includes information such as the point of sale ID, customer's
-            phone number, transaction status, and product details. There are
-            also fields for customer information and activation documents.
-          </p>
         </div>
         <div id="content">
           <div className="w-full gap-y-4 lg:gap-4">

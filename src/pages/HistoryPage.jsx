@@ -74,13 +74,6 @@ export default function HistoryPage() {
           <h1 className=" mb-2 text-5xl font-semibold text-zinc-200">
             History
           </h1>
-          <p className="text-lg font-medium text-zinc-400">
-            This page shows a history of transactions processed by the system.
-            You can search for transactions by ID or by Pos ID . you can view
-            information about the POS ID, transaction type, date, and their
-            status. Use the "Load more" button to view additional transaction
-            history.
-          </p>
         </div>
         <div id="content">
           <SearchBar
