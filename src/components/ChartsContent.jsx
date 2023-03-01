@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { CityData, OfferData } from "../js/DataToChartData";
 import { ChartCard, MapCard, TransactionTrendCard } from "./ChartCard";
 import PosCard from "./PosCard";
@@ -5,6 +6,23 @@ import PosCard from "./PosCard";
 export default function ChartsContent({ cardsData }) {
   const offer_data = cardsData ? OfferData(cardsData[3]) : null;
   const city_data = cardsData ? CityData(cardsData[2]) : null;
+
+  const [window_width, setWindow_width] = useState(
+    Math.max(700, Math.min(350, 1.4 * window.innerWidth - 280))
+  );
+
+  useEffect(() => {
+    function handle_resize() {
+      setWindow_width(
+        Math.min(700, Math.max(350, 1.4 * window.innerWidth - 280))
+      );
+      console.log(window_width);
+    }
+
+    window.addEventListener("resize", handle_resize);
+    return () => window.removeEventListener("resize", handle_resize);
+  }, []);
+
   return (
     <div
       id="charts"
@@ -30,7 +48,7 @@ export default function ChartsContent({ cardsData }) {
       <MapCard
         className="col-span-2 row-span-3"
         city_data={city_data}
-        height={700}
+        height={window_width}
       >
         Wilayas
       </MapCard>

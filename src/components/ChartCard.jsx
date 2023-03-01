@@ -71,7 +71,7 @@ export function TransactionTrendCard({
         " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
-      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-800">
+      <div className="flex flex-col sm:flex-row justify-between mb-2 pb-2 border-b border-zinc-800">
         <h1
           className={
             "text-xl font-semibold truncate text-zinc-200 inline-block"
@@ -79,7 +79,9 @@ export function TransactionTrendCard({
         >
           {children}
         </h1>
-        <DateInput updateDate={updateDate} date={date} />
+        <div className="mt-2 sm:mt-0">
+          <DateInput updateDate={updateDate} date={date} />
+        </div>
       </div>
       {chartData && (
         <LineChart dataset={chartData} label={label} height={height} />

@@ -46,7 +46,7 @@ export default function PosDetailsPage() {
         </div>
         <div id="content">
           <div className="grid w-full grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-4">
-            <div className="flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
+            <div className="col-span-1 flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
               <h1 className="text-xl font-semibold truncate text-zinc-200 inline-block mb-2 pb-2 border-b border-zinc-800">
                 POS Information
               </h1>
@@ -71,13 +71,13 @@ export default function PosDetailsPage() {
             </div>
             <TransactionTrendCard
               posid={id}
-              className="col-span-2"
+              className="col-span-1 lg:col-span-2"
               label="transactions"
               height={350}
             >
               Transactions trend
             </TransactionTrendCard>
-            <div className="col-span-3 bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
+            <div className="col-span-1 lg:col-span-3 bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
               <h1 className="text-xl font-semibold truncate text-zinc-200 inline-block pb-2 border-b border-zinc-800 w-full">
                 Transactions History
               </h1>

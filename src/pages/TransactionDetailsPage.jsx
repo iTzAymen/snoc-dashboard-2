@@ -54,10 +54,10 @@ export default function TransactionDetailsPage() {
                     } else {
                       return (
                         <div
-                          className="grid grid-cols-2 h-10 border-b border-zinc-800 p-2 mb-2"
+                          className="grid grid-cols-2 gap-4 h-10 border-b border-zinc-800 p-2 mb-2"
                           key={idx}
                         >
-                          <h1 className="font-bold">{key[0]}</h1>
+                          <h1 className="font-bold truncate">{key[0]}</h1>
                           <p>{key[1]}</p>
                         </div>
                       );

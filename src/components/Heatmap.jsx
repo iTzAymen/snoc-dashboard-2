@@ -154,7 +154,7 @@ const Heatmap = ({ city_data, height }) => {
         enabled={tooltipData.enabled}
       />
       <svg
-        className="mx-auto w-full scale-125"
+        className="mx-auto w-full scale-125 2xl:scale-100"
         height={height}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
