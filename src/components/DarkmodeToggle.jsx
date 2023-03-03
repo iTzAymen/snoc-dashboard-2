@@ -20,15 +20,19 @@ export default function DarkmodeToggle() {
   return (
     <div className="h-6 flex ">
       <MoonIcon className="h-6 w-6 mr-3 text-black dark:text-white" />
-      <span className="text-black dark:text-white text-center items-center">
-        Darkmode
-      </span>
-      <div className="bg-zinc-100 dark:bg-zinc-800 shadow-inner shadow-zinc-300 dark:shadow-zinc-900 h-5 w-10 rounded-full ml-auto">
+      <div className="flex items-center">
+        <span className="text-black dark:text-white text-center items-center">
+          Darkmode
+        </span>
+      </div>
+      <div
+        onClick={toggleDark}
+        className="bg-zinc-100 dark:bg-zinc-800 shadow-inner shadow-zinc-300 dark:shadow-zinc-900 h-5 w-10 rounded-full ml-auto group cursor-pointer"
+      >
         <div
-          className={`h-5 w-5 rounded-full bg-rose-600 dark:bg-rose-900  cursor-pointer hover:scale-110 active:scale-95 transition-all ${
+          className={`h-5 w-5 rounded-full bg-rose-600 dark:bg-rose-900 group-hover:scale-110 active:scale-95 transition-all ${
             dark ? " translate-x-full " : "translate-x-0"
           }`}
-          onClick={toggleDark}
         ></div>
       </div>
     </div>
