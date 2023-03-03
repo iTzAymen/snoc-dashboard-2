@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 export default function LoadingPage({ loading }) {
   return (
     <div
-      className={`min-h-screen w-screen bg-zinc-900 fixed left-0 top-0 pointer-events-none ${
+      className={`min-h-screen w-screen bg-zinc-50 dark:bg-zinc-900 fixed left-0 top-0 pointer-events-none ${
         loading ? "z-50" : "animate-fadeout opacity-0"
       }`}
     >

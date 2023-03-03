@@ -55,13 +55,13 @@ export default function Navbar() {
 
   if (window.location.href.endsWith("/login")) {
     return (
-      <nav className="z-50 bg-zinc-900 w-full shadow-lg sticky top-0">
+      <nav className="z-50 bg-white dark:bg-zinc-900 w-full shadow-lg sticky top-0">
         <div className="md:container flex justify-between px-4 py-4">
           <div className="flex mx-auto justify-between gap-4 flex-grow md:flex-grow-0">
             <Logo className="h-16 transition-all"></Logo>
             <h1
               id="nav-title"
-              className="text-white transition-all text-lg xs:text-3xl font-semibold m-auto"
+              className="text-dark dark:text-white transition-all text-lg xs:text-3xl font-semibold m-auto"
             >
               SNOC DASHBOARD
             </h1>
@@ -72,13 +72,13 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="z-50 bg-zinc-900 w-full shadow-lg sticky top-0">
+    <nav className="z-50 bg-white dark:bg-zinc-900 w-full shadow-lg sticky top-0">
       <div className="md:container flex justify-between px-4 py-4">
         <div className="flex justify-between gap-4 flex-grow md:flex-grow-0">
           <Logo className="h-16 transition-all"></Logo>
           <h1
             id="nav-title"
-            className="text-white transition-all text-lg xs:text-3xl font-semibold m-auto"
+            className="text-dark dark:text-white transition-all text-lg xs:text-3xl font-semibold m-auto"
           >
             SNOC DASHBOARD
           </h1>
@@ -111,12 +111,12 @@ export default function Navbar() {
 
           {window_width <= 650 && (
             <div className="w-full flex flex-col gap-2 mt-auto">
-              <button className="mx-6 p-3 rounded-lg border-2 border-zinc-500 text-zinc-500 hover:border-zinc-50 hover:text-zinc-50">
+              <button className="mx-6 p-3 rounded-full border-2 border-zinc-900 text-zinc-900 hover:border-zinc-900 hover:text-white hover:bg-zinc-900  dark:border-zinc-500 dark:text-zinc-500 dark:hover:border-zinc-50 dark:hover:text-zinc-50">
                 Settings
               </button>
               <button
                 onClick={Logout}
-                className="mx-6 p-3 rounded-lg border-2 border-rose-900 text-rose-900 hover:bg-rose-900 hover:text-white hover:bg-opacity-50"
+                className="mx-6 p-3 rounded-full border-2 border-rose-700 text-rose-700 hover:bg-rose-700 hover:text-white   dark:border-rose-900 dark:text-rose-900 dark:hover:bg-rose-900 dark:hover:text-white dark:hover:bg-opacity-50"
               >
                 Sign out
               </button>

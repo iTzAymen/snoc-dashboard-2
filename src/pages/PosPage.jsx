@@ -68,7 +68,7 @@ export default function PosPage() {
     <main className=" md:container p-4 md:mt-4 min-screen-height">
       <div className="flex flex-col">
         <div id="description" className="mb-4">
-          <h1 className=" mb-2 text-5xl font-semibold text-zinc-200">
+          <h1 className=" mb-2 text-5xl font-semibold text-dark dark:text-zinc-200">
             Points of Sale
           </h1>
         </div>
@@ -82,13 +82,13 @@ export default function PosPage() {
             getSuggestions={getSuggestions}
             searchTypeText={["Search by ID", "Search by Name"]}
           />
-          <div className="mt-4 col-span-3 bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
+          <div className="mt-4 col-span-3 bg-white dark:bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
             {data.length > 0 && <PosSearchList data={data} className="" />}
             {data.length == 0 && <Spinner className="mb-3 mx-auto" />}
             <button
               onClick={getPage}
               disabled={debounce}
-              className={`w-full bg-zinc-700 border-zinc-600 hover:bg-rose-900 hover:border-rose-500 ${
+              className={`w-full bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 hover:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 ${
                 debounce ? "pointer-events-none" : ""
               } hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all focus-zinc`}
             >

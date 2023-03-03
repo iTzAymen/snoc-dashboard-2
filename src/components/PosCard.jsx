@@ -17,13 +17,13 @@ export default function PosCard({ className, children }) {
     <div
       className={
         className +
-        " bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-dark shadow-lg hover:shadow-xl transition-all flex flex-col thin-zinc-border"
+        " bg-white dark:bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col thin-zinc-border"
       }
     >
-      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-800">
+      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <h1
           className={
-            "text-xl font-semibold truncate text-zinc-200 inline-block"
+            "text-xl font-semibold truncate text-dark dark:text-zinc-200 inline-block"
           }
         >
           {children}
@@ -41,7 +41,7 @@ export default function PosCard({ className, children }) {
             <Link
               to={"/pos/" + pdv_data.id}
               key={pdv_index}
-              className="flex w-full justify-between border-zinc-700 border-opacity-50 hover:bg-rose-900 hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
+              className="flex w-full justify-between border-zinc-400 dark:border-zinc-700 border-opacity-50 hover:bg-rose-700 hover:border-rose-700 hover:text-white dark:hover:bg-rose-900 dark:hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
             >
               <p className="font-semibold">{pdv_index + 1}</p>
               <h1 className="truncate w-1/2">{pdv_data.name}</h1>

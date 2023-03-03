@@ -29,11 +29,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="overflow-hidden relative bg-zinc-900">
+    <div className="overflow-hidden relative bg-white dark:bg-zinc-900">
       <main className="md:container p-4 md:mt-4 min-screen-height flex flex-col">
-        <form className=" thin-zinc-border bg-zinc-900 shadow-2xl z-20 rounded-xl w-full xs:min-w-[24rem] xs:w-1/3 mx-auto my-auto p-6 flex flex-col align-middle gap-6">
+        <form className=" thin-zinc-border bg-white dark:bg-zinc-900 shadow-lg dark:shadow-2xl z-20 rounded-xl w-full xs:min-w-[24rem] xs:w-1/3 mx-auto my-auto p-6 flex flex-col align-middle gap-6">
           <div id="description" className="">
-            <h1 className=" mb-2 text-3xl font-semibold text-zinc-200">
+            <h1 className=" mb-2 text-3xl font-semibold text-dark dark:text-zinc-200">
               Sign in
             </h1>
           </div>
@@ -44,7 +44,7 @@ export default function LoginPage() {
               type="text"
               ref={usernameRef}
               placeholder="Username"
-              className="bg-zinc-900 w-full rounded-lg p-3 focus-zinc placeholder:text-zinc-500 thin-zinc-border hover:border-zinc-500"
+              className="bg-zinc-50 dark:bg-zinc-900 w-full rounded-lg p-3 focus-zinc placeholder:text-zinc-500 thin-zinc-border hover:border-zinc-300 dark:hover:border-zinc-500"
             ></input>
           </div>
           <div>
@@ -55,14 +55,14 @@ export default function LoginPage() {
                 type={showPassword ? "text" : "password"}
                 ref={passwordRef}
                 placeholder="Password"
-                className="bg-zinc-900 w-full rounded-lg p-3 focus-zinc placeholder:text-zinc-500 thin-zinc-border hover:border-zinc-500 peer-hover:border-zinc-500"
+                className="bg-zinc-50 dark:bg-zinc-900 w-full rounded-lg p-3 focus-zinc placeholder:text-zinc-500 thin-zinc-border hover:border-zinc-300 dark:hover:border-zinc-500"
               ></input>
               {showPassword && (
                 <EyeSlash
                   onClick={() => {
                     setShowPassword(false);
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 cursor-pointer peer"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 cursor-pointer peer"
                 />
               )}
               {!showPassword && (
@@ -70,11 +70,11 @@ export default function LoginPage() {
                   onClick={() => {
                     setShowPassword(true);
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200 cursor-pointer peer"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 cursor-pointer peer"
                 />
               )}
             </div>
-            <p className="text-sm mt-2 font-medium cursor-pointer hover:text-rose-800 underline">
+            <p className="text-sm mt-2 font-medium cursor-pointer hover:text-rose-700 dark:hover:text-rose-800 underline">
               Forgot password?
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function LoginPage() {
           </p>
           <button
             onClick={updateInfo}
-            className={`bg-zinc-700 border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-500 rounded-lg px-4 py-3 focus-zinc transition-all ${
+            className={`text-white bg-rose-700 dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 rounded-lg px-4 py-3 focus-zinc transition-all ${
               loading ? "pointer-events-none" : ""
             }`}
           >
@@ -91,9 +91,9 @@ export default function LoginPage() {
             {!loading && "Login"}
           </button>
           <div className=" h-1 w-full border-t border-zinc-800"></div>
-          <p className="text-sm text-white -mt-2">
+          <p className="text-sm dark:text-white -mt-2">
             New member?{" "}
-            <span className="font-medium cursor-pointer hover:text-rose-800 underline">
+            <span className="font-medium cursor-pointer hover:text-rose-700 dark:hover:text-rose-800 underline">
               Request an account now
             </span>
           </p>

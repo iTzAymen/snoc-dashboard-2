@@ -45,13 +45,15 @@ export default function DaysDropdown({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className=" dropdown-list absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-zinc-800 py-1 text-base shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
+          <Listbox.Options className=" dropdown-list absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-zinc-100 dark:bg-zinc-800 py-1 text-base shadow-lg ring-1 ring-dark dark:ring-dark ring-opacity-5 focus:outline-none sm:text-sm">
             {droplist.map((object, objectIdx) => (
               <Listbox.Option
                 key={objectIdx}
                 className={({ active }) =>
                   `relative cursor-default select-none py-2 px-auto ${
-                    active ? "bg-rose-900 text-rose-100" : "text-zinc-100"
+                    active
+                      ? "bg-rose-700 dark:bg-rose-900 text-rose-100"
+                      : "text-dark dark:text-zinc-100"
                   }`
                 }
                 value={object}
@@ -66,7 +68,7 @@ export default function DaysDropdown({
                       {object.value}
                     </span>
                     {selected ? (
-                      <span className="absolute inset-y-0 left-0 flex items-center pl-2 text-rose-100">
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-2 dark:text-rose-100">
                         <CheckIcon className="h-5 w-5" aria-hidden="true" />
                       </span>
                     ) : null}

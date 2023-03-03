@@ -85,7 +85,9 @@ export function PieChart({ dataset, label, height }) {
               className="h-full aspect-square rounded-md border-2"
               style={{ backgroundColor: e.fillStyle, stroke: e.strokeStyle }}
             ></div>
-            <p className="text-white pl-3 truncate w-full">{e.text}</p>
+            <p className="text-dark dark:text-white pl-3 truncate w-full">
+              {e.text}
+            </p>
           </div>
         ))}
       </div>

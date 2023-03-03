@@ -15,7 +15,9 @@ export default function Overview() {
   return (
     <div className="flex flex-col">
       <div id="description" className="mb-4">
-        <h1 className=" mb-2 text-5xl font-semibold text-zinc-200">Overview</h1>
+        <h1 className=" mb-2 text-5xl font-semibold text-dark  dark:text-zinc-200">
+          Overview
+        </h1>
       </div>
       <div id="content">
         <CardsContent cardsData={data} />

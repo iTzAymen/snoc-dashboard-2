@@ -36,14 +36,14 @@ export default function PosDetailsPage() {
     <main className=" md:container p-4 md:mt-4 min-screen-height">
       <div className="flex flex-col">
         <div id="description" className="mb-4">
-          <h1 className=" mb-2 text-5xl font-semibold text-zinc-200">
+          <h1 className=" mb-2 text-5xl font-semibold text-dark dark:text-zinc-200">
             POS Details
           </h1>
         </div>
         <div id="content">
           <div className="grid w-full grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-4">
-            <div className="col-span-1 flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
-              <h1 className="text-xl font-semibold truncate text-zinc-200 inline-block mb-2 pb-2 border-b border-zinc-800">
+            <div className="col-span-1 flex flex-col bg-white dark:bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
+              <h1 className="text-xl font-semibold truncate text-dark dark:text-zinc-200 inline-block mb-2 pb-2 border-b border-zinc-200 dark:border-zinc-800">
                 POS Information
               </h1>
               <div className="w-full grow flex flex-col">
@@ -54,7 +54,7 @@ export default function PosDetailsPage() {
                     }
                     return (
                       <div
-                        className="grid grid-cols-2 h-10 border-b border-zinc-800 p-2 mb-2"
+                        className="grid grid-cols-2 h-10 border-b border-zinc-200 dark:border-zinc-800 p-2 mb-2"
                         key={idx}
                       >
                         <h1 className="font-bold">{key[0]}</h1>
@@ -73,15 +73,15 @@ export default function PosDetailsPage() {
             >
               Transactions trend
             </TransactionTrendCard>
-            <div className="col-span-1 lg:col-span-3 bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
-              <h1 className="text-xl font-semibold truncate text-zinc-200 inline-block pb-2 border-b border-zinc-800 w-full">
+            <div className="col-span-1 lg:col-span-3 bg-white dark:bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border">
+              <h1 className="text-xl font-semibold truncate text-dark dark:text-zinc-200 inline-block pb-2 border-b border-zinc-200 dark:border-zinc-800 w-full">
                 Transactions History
               </h1>
               {transactions && <TransactionsSearchList data={transactions} />}
               {!transactions && <Spinner className="mb-3 mx-auto" />}
               <button
                 onClick={getPage}
-                className="w-full bg-zinc-700 border-zinc-600 hover:bg-rose-900 hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
+                className="w-full bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 hover:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
               >
                 Load more
               </button>

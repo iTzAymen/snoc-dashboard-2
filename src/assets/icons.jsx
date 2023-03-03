@@ -177,7 +177,7 @@ export function Spinner({
 }) {
   size = size ? size : "h-8";
   primaryColor = primaryColor ? primaryColor : "fill-zinc-100";
-  secondaryColor = secondaryColor ? secondaryColor : "text-zinc-500";
+  secondaryColor = secondaryColor ? secondaryColor : "text-zinc-400";
   secondaryDarkColor = secondaryDarkColor
     ? secondaryDarkColor
     : "text-zinc-500";

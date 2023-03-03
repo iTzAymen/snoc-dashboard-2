@@ -24,7 +24,7 @@ export default function PosSearchList({ data, className }) {
           <Link
             to={"/pos/" + pdv_data.id}
             key={pdv_index}
-            className="flex w-full justify-between border-zinc-700 border-opacity-50 hover:bg-rose-900 hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
+            className="flex w-full justify-between border-zinc-400 dark:border-zinc-700 border-opacity-50 hover:bg-rose-700 dark:hover:bg-rose-900 hover:border-rose-700 hover:text-white dark:hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
           >
             <p className="font-semibold w-3">{pdv_index + 1}</p>
             <h1 className="w-1/3 sm:w-1/5 text-left capitalize truncate">

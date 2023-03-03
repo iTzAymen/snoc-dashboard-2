@@ -68,13 +68,13 @@ export function TransactionTrendCard({
     <div
       className={
         className +
-        " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
+        " flex flex-col bg-white dark:bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
-      <div className="flex flex-col sm:flex-row justify-between mb-2 pb-2 border-b border-zinc-800">
+      <div className="flex flex-col sm:flex-row justify-between mb-2 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <h1
           className={
-            "text-xl font-semibold truncate text-zinc-200 inline-block"
+            "text-xl font-semibold truncate text-dark dark:text-zinc-200 inline-block"
           }
         >
           {children}
@@ -104,13 +104,13 @@ export function ChartCard({
     <div
       className={
         className +
-        " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
+        " flex flex-col bg-white dark:bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
-      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-800">
+      <div className="flex justify-between mb-2 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <h1
           className={
-            "text-xl font-semibold truncate text-zinc-200 inline-block"
+            "text-xl font-semibold truncate text-dark dark:text-zinc-200 inline-block"
           }
         >
           {children}
@@ -136,10 +136,10 @@ export function MapCard({ city_data, className, height, children }) {
     <div
       className={
         className +
-        " flex flex-col bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-dark shadow-lg hover:shadow-xl transition-all thin-zinc-border"
+        " flex flex-col bg-white dark:bg-zinc-900 overflow-hidden p-3 rounded-xl shadow-lg hover:shadow-xl transition-all thin-zinc-border"
       }
     >
-      <h1 className="text-xl font-semibold truncate text-zinc-200 mb-2 pb-2 border-b border-zinc-800">
+      <h1 className="text-xl font-semibold truncate text-dark dark:text-zinc-200 mb-2 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         {children}
       </h1>
       {city_data && <Heatmap city_data={city_data} height={height} />}

@@ -30,21 +30,21 @@ export default function DateInput({ updateDate, date }) {
         label="Day"
         droplist={daysDroplist}
         initial_value={daysDroplist[0]}
-        className="bg-zinc-800 sm:w-20 hover:bg-zinc-850 border-zinc-600 border border-r-0 px-2 py-2 rounded-l-lg"
+        className="bg-white dark:bg-zinc-800 sm:w-20 hover:bg-zinc-200 dark:hover:bg-zinc-850 border-zinc-300 dark:border-zinc-600 border border-r-0 px-2 py-2 rounded-l-lg shadow-sm"
       />
       <DropDown
         updateDate={updateDate}
         label="Month"
         droplist={monthsDropList}
         initial_value={monthsDropList[0]}
-        className="bg-zinc-800 sm:w-[24] hover:bg-zinc-850 border-zinc-600 border px-2 py-2"
+        className="bg-white dark:bg-zinc-800 sm:w-[24] hover:bg-zinc-200 dark:hover:bg-zinc-850 border-zinc-300 dark:border-zinc-600 border px-2 py-2 shadow-sm"
       />
       <DropDown
         updateDate={updateDate}
         label="Year"
         droplist={yearsDropsList}
         initial_value={yearsDropsList[yearsDropsList.length - 1]}
-        className="bg-zinc-800 sm:w-24 hover:bg-zinc-850 border-zinc-600 border border-l-0 px-2 py-2 rounded-r-lg"
+        className="bg-white dark:bg-zinc-800 sm:w-24 hover:bg-zinc-200 dark:hover:bg-zinc-850 border-zinc-300 dark:border-zinc-600 border border-l-0 px-2 py-2 rounded-r-lg shadow-sm"
       />
     </div>
   );

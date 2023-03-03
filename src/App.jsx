@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import PosPage from "./pages/PosPage";
@@ -10,6 +11,22 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
+  useEffect(() => {
+    const userTheme = window.localStorage.getItem("theme");
+    const systemTheme = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (userTheme == "undefined") {
+      if (systemTheme) {
+        document.documentElement.classList.add("dark");
+      }
+    } else {
+      if (userTheme == "true") {
+        document.documentElement.classList.add("dark");
+      }
+    }
+    console.log(document.documentElement.classList);
+  }, []);
   return (
     <div className="App">
       <Navbar />

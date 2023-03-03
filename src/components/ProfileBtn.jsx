@@ -3,6 +3,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 import { SettingsIcon, SignoutIcon } from "../assets/icons";
 import { Logout } from "../js/Login";
+import DarkmodeToggle from "./DarkmodeToggle";
 
 export default function ProfileBtn({ children }) {
   return (
@@ -29,8 +30,11 @@ export default function ProfileBtn({ children }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-100"
       >
-        <Menu.Items className="absolute border-zinc-700 border overflow-hidden -top-72 md:top-10 md:right-0 mt-2 w-full md:w-56 origin-top-right divide-y divide-zinc-700 divide-opacity-30 rounded-lg bg-zinc-800 shadow-lg shadow-zinc-900 ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute border overflow-hidden -top-72 md:top-10 md:right-0 mt-2 w-full md:w-56 origin-top-right divide-y divide-opacity-30 rounded-lg shadow-lg ring-opacity-5 focus:outline-none ring-1 divide-zinc-300 border-zinc-300 border-opacity-50 bg-white ring-black    dark:divide-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:shadow-zinc-900 dark:ring-black">
           <ProfileCard username="Aymen" rank="admin" />
+          <div className="w-full items-center px-2 py-2 text-sm">
+            <DarkmodeToggle />
+          </div>
           <div className="">
             <MenuItem Icon={SettingsIcon}>Settings</MenuItem>
           </div>
@@ -52,10 +56,12 @@ function MenuItem({ children, Icon, onClick }) {
         <button
           onClick={onClick}
           className={`${
-            active ? "bg-rose-900 text-white" : " text-white"
+            active
+              ? "bg-rose-700 hover:text-white dark:bg-rose-900 text-black dark:text-white"
+              : " text-black dark:text-white"
           } group flex w-full items-center px-2 py-2 text-sm`}
         >
-          <Icon className="mr-3" />
+          {Icon && <Icon className="mr-3" />}
           {children}
         </button>
       )}
@@ -71,11 +77,15 @@ export function ProfileCard({ username, rank }) {
           username + rank
         }`}
         alt="avatar"
-        className="bg-zinc-900 rounded-full mx-auto my-2 h-24 aspect-square border-zinc-700 border"
+        className="rounded-full mx-auto my-2 h-24 aspect-square border bg-zinc-100 border-zinc-300  dark:bg-zinc-900 dark:border-zinc-700"
       ></img>
       <div className="flex flex-col text-center">
-        <p className="text-xs text-zinc-200 font-light capitalize">{rank}</p>
-        <h1 className="text-sm text-zinc-50 capitalize">{username}</h1>
+        <p className="text-xs text-zinc-700 dark:text-zinc-200 font-light capitalize">
+          {rank}
+        </p>
+        <h1 className="text-sm text-zinc-900 dark:text-zinc-200 capitalize">
+          {username}
+        </h1>
       </div>
     </div>
   );

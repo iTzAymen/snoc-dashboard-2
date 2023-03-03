@@ -5,17 +5,20 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply bg-zinc-800 text-zinc-50;
+  body {
+    @apply bg-white text-dark;
+    @apply dark:bg-zinc-800 dark:text-zinc-50;
     font-family: "Inter", sans-serif;
   }
 
-  html::-webkit-scrollbar {
-    @apply w-3 bg-zinc-900 rounded;
+  body::-webkit-scrollbar {
+    @apply w-3 bg-zinc-100 rounded;
+    @apply dark:bg-zinc-900;
   }
 
-  html::-webkit-scrollbar-thumb {
-    @apply bg-zinc-800 rounded bg-opacity-50;
+  body::-webkit-scrollbar-thumb {
+    @apply bg-zinc-300 rounded bg-opacity-50;
+    @apply dark:bg-zinc-800;
   }
 
   *,
@@ -26,12 +29,15 @@
   }
 
   .nav-menu-button {
-    @apply font-medium text-xl text-zinc-500 hover:text-zinc-100 active:text-white;
+    @apply font-medium text-xl text-zinc-500 hover:text-dark active:text-zinc-900;
+    @apply dark:text-zinc-500 dark:hover:text-zinc-100 dark:active:text-white;
     @apply my-auto mx-auto;
   }
 
   .special-menu-button {
-    @apply flex w-full justify-center rounded-full bg-black border-2 border-zinc-500 bg-opacity-20 px-3 py-1 nav-menu-button hover:border-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75;
+    @apply flex w-full border-2 justify-center rounded-full px-3 py-1 nav-menu-button focus:outline-none focus-visible:ring-2;
+    @apply bg-white border-zinc-500 bg-opacity-20 hover:border-dark hover:bg-dark hover:text-white focus-visible:ring-white focus-visible:ring-opacity-75;
+    @apply dark:bg-black dark:border-zinc-500 dark:bg-opacity-20 dark:hover:border-zinc-100 dark:focus-visible:ring-white dark:focus-visible:ring-opacity-75;
   }
 
   .dropdown-list::-webkit-scrollbar {
@@ -51,7 +57,7 @@
   }
 
   .thin-zinc-border {
-    @apply border-zinc-700 border-opacity-50 border;
+    @apply border-zinc-300 dark:border-zinc-700 border-opacity-50 border;
   }
 
   .logo-full {
@@ -106,14 +112,14 @@
       @apply flex flex-col align-middle gap-5;
       @apply fixed top-0 right-0 h-full w-full;
       @apply pt-20 pb-6;
-      @apply bg-zinc-900;
+      @apply dark:bg-zinc-900 bg-zinc-50;
     }
 
     .nav-menu-button {
       @apply text-xl box-border w-full text-center py-3 my-0;
       @apply rounded-lg;
-      @apply hover:bg-zinc-800;
-      @apply active:bg-rose-900;
+      @apply hover:bg-zinc-100 dark:hover:bg-zinc-800;
+      @apply active:bg-rose-600 dark:active:bg-rose-900;
     }
 
     #profile-btn {
