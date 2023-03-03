@@ -93,7 +93,7 @@ export default function HistoryPage() {
             <button
               onClick={getPage}
               disabled={debounce}
-              className={`w-full bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 hover:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 ${
+              className={`w-full bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 hover:bg-rose-900 hover:border-rose-900 dark:hover:bg-rose-900 dark:hover:border-rose-500 ${
                 debounce ? "pointer-events-none" : ""
               } hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all focus-zinc`}
             >

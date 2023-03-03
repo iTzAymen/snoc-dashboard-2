@@ -1,20 +1,10 @@
 import { useState } from "react";
 
-const userTheme = localStorage.getItem("theme");
-const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-let theme = false;
-if (userTheme != "undefined") {
-  if (systemTheme) {
-    theme = true;
-  }
-} else {
-  if (userTheme) {
-    theme = true;
-  }
-}
-
 export default function DarkmodeToggle() {
-  const [dark, setDark] = useState(theme);
+  const [dark, setDark] = useState(
+    document.documentElement.classList.contains("dark")
+  );
+  console.log(document.documentElement.classList.contains("dark"));
   const toggleDark = () => {
     const newval = !dark;
     setDark(newval);

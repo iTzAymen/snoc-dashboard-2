@@ -70,7 +70,7 @@ export default function SearchBar({
       </div>
       <button
         onClick={onClick}
-        className="bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 rounded-lg px-4 py-2 focus-zinc transition-all"
+        className="bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:hover:bg-rose-900 dark:border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 rounded-lg px-4 py-2 focus-zinc transition-all"
       >
         Search
       </button>

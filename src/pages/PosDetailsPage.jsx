@@ -81,7 +81,7 @@ export default function PosDetailsPage() {
               {!transactions && <Spinner className="mb-3 mx-auto" />}
               <button
                 onClick={getPage}
-                className="w-full bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 hover:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
+                className="w-full bg-rose-700 text-white dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 hover:bg-rose-900 dark:hover:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 hover:-translate-y-1 border rounded-lg py-2 px-2 cursor-pointer transition-all"
               >
                 Load more
               </button>

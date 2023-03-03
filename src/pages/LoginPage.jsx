@@ -83,7 +83,7 @@ export default function LoginPage() {
           </p>
           <button
             onClick={updateInfo}
-            className={`text-white bg-rose-700 dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 border hover:bg-rose-900 active:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 rounded-lg px-4 py-3 focus-zinc transition-all ${
+            className={`text-white bg-rose-700 dark:bg-zinc-700 border-rose-700 dark:border-zinc-600 border hover:bg-rose-900 dark:hover:bg-rose-900 active:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 rounded-lg px-4 py-3 focus-zinc transition-all ${
               loading ? "pointer-events-none" : ""
             }`}
           >

@@ -38,7 +38,7 @@ export default function TransactionDetailsPage() {
                           <h1 className="font-bold">{key[0]}</h1>
                           <Link
                             to={`/pos/${key[1]}`}
-                            className="w-min flex text-sm -translate-y-3 bg-rose-700 dark:bg-zinc-700 border-rose-700 text-white dark:border-zinc-600 hover:bg-rose-900 hover:border-rose-900 dark:hover:border-rose-500 border rounded-lg py-2 px-2 cursor-pointer transition-all"
+                            className="w-min flex text-sm -translate-y-3 bg-rose-700 dark:bg-zinc-700 border-rose-700 text-white dark:border-zinc-600 hover:bg-rose-900 hover:border-rose-900 dark:hover:bg-rose-900 dark:hover:border-rose-500 border rounded-lg py-2 px-2 cursor-pointer transition-all"
                           >
                             <UserMini className="text-white mr-1 w-4 h-4 my-auto" />
                             <p className="">{key[1]}</p>
