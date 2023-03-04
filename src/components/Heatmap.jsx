@@ -106,6 +106,7 @@ const Heatmap = ({ city_data, height }) => {
 
     setStyle({
       fillOpacity: 0.5,
+      strokeOpacity: "0.1",
     });
   };
 
@@ -119,6 +120,7 @@ const Heatmap = ({ city_data, height }) => {
     });
     setStyle({
       fillOpacity: val.opacity ? val.opacity : 0.025,
+      strokeOpacity: "0.1",
     });
   };
 
@@ -129,7 +131,7 @@ const Heatmap = ({ city_data, height }) => {
     });
     return (
       <path
-        className="fill-dark stroke-dark hover:fill-rose-500  hover:stroke-rose-800  dark:fill-white transition-all dark:hover:fill-rose-700 dark:hover:stroke-rose-900"
+        className="fill-dark stroke-dark dark:stroke-white hover:fill-rose-500  hover:stroke-rose-800  dark:fill-white transition-all dark:hover:fill-rose-700 dark:hover:stroke-rose-900"
         style={style}
         key={val.id}
         id={val.id}
