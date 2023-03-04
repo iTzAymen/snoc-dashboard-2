@@ -18,7 +18,7 @@ export async function getForecastData() {
     predictions: 17,
   };
   const { data } = await axios.post(
-    `http://itzaymen.pythonanywhere.com`,
+    `https://itzaymen.pythonanywhere.com`,
     config
   );
   console.log(`received forecast data`);
@@ -79,7 +79,7 @@ export async function getPosForecastData(id) {
     predictions: 17,
   };
   const { data } = await axios.post(
-    `http://itzaymen.pythonanywhere.com`,
+    `https://itzaymen.pythonanywhere.com`,
     config
   );
   console.log(`received forecast data`);
