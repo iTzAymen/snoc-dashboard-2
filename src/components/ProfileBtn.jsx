@@ -35,7 +35,7 @@ export default function ProfileBtn({ children }) {
           <div className="w-full items-center px-2 py-2 text-sm">
             <DarkmodeToggle />
           </div>
-          <div className="">
+          <div className="hidden">
             <MenuItem Icon={SettingsIcon}>Settings</MenuItem>
           </div>
           <div className="">
@@ -57,8 +57,8 @@ function MenuItem({ children, Icon, onClick }) {
           onClick={onClick}
           className={`${
             active
-              ? "bg-rose-700 hover:text-white dark:bg-rose-900 text-black dark:text-white"
-              : " text-black dark:text-white"
+              ? "bg-rose-700 hover:text-white dark:bg-rose-900 text-zinc-900 dark:text-white"
+              : " text-zinc-900 dark:text-white"
           } group flex w-full items-center px-2 py-2 text-sm`}
         >
           {Icon && <Icon className="mr-3" />}

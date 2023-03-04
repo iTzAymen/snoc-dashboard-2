@@ -4,6 +4,7 @@ import { MenuIcon } from "../assets/icons";
 import ProfileBtn, { ProfileCard } from "./ProfileBtn";
 import { useEffect, useRef, useState } from "react";
 import { Logout } from "../js/Login";
+import DarkmodeToggle from "./DarkmodeToggle";
 
 function Logo({ className }) {
   return (
@@ -93,7 +94,7 @@ export default function Navbar() {
           ref={navRef}
           className="nav-menu z-10 hidden md:flex my-auto md:gap-4"
         >
-          {window_width <= 650 && <ProfileCard username="Aymen" rank="admin" />}
+          {window_width <= 768 && <ProfileCard username="Aymen" rank="admin" />}
           <a href="/" className="nav-menu-button rounded-lg focus-zinc">
             Overview
           </a>
@@ -103,20 +104,23 @@ export default function Navbar() {
           <a href="/history" className="nav-menu-button rounded-lg focus-zinc">
             History
           </a>
-          {window_width > 650 && (
+          {window_width > 768 && (
             <li id="profile-btn" className="nav-menu-button">
               <ProfileBtn>Profile</ProfileBtn>
             </li>
           )}
 
-          {window_width <= 650 && (
+          {window_width <= 768 && (
             <div className="w-full flex flex-col gap-2 mt-auto">
-              <button className="mx-6 p-3 rounded-full border-2 border-zinc-900 text-zinc-900 hover:border-zinc-900 hover:text-white hover:bg-zinc-900  dark:border-zinc-500 dark:text-zinc-500 dark:hover:border-zinc-50 dark:hover:text-zinc-50">
+              <div className="mx-6 p-3 border rounded-full thin-zinc-border">
+                <DarkmodeToggle />
+              </div>
+              <button className="hidden mx-6 p-3 rounded-full border-2 border-zinc-900 text-zinc-900 hover:border-zinc-900 hover:text-white hover:bg-zinc-900  dark:border-zinc-500 dark:text-zinc-500 dark:hover:border-zinc-50 dark:hover:bg-zinc-50 dark:hover:text-dark">
                 Settings
               </button>
               <button
                 onClick={Logout}
-                className="mx-6 p-3 rounded-full border-2 border-rose-700 text-rose-700 hover:bg-rose-700 hover:text-white   dark:border-rose-900 dark:text-rose-900 dark:hover:bg-rose-900 dark:hover:text-white dark:hover:bg-opacity-50"
+                className="mx-6 p-3 rounded-full border-2 border-rose-700 text-rose-700 hover:bg-rose-700 hover:text-white   dark:border-rose-900 dark:text-rose-900 dark:hover:bg-rose-900 dark:hover:text-white"
               >
                 Sign out
               </button>
