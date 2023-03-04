@@ -129,7 +129,7 @@ const Heatmap = ({ city_data, height }) => {
     });
     return (
       <path
-        className="fill-dark stroke-dark hover:fill-rose-500 hover:stroke-rose-800  dark:fill-white transition-all darK:hover:fill-rose-700 dark:hover:stroke-rose-400"
+        className="fill-dark stroke-dark hover:fill-rose-500  hover:stroke-rose-800  dark:fill-white transition-all dark:hover:fill-rose-700 dark:hover:stroke-rose-900"
         style={style}
         key={val.id}
         id={val.id}
