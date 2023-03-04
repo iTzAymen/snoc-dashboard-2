@@ -145,7 +145,7 @@ export function LineChart({ dataset, predData, label, height }) {
   const options = {
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: false, position: "bottom", align: "start" },
+      legend: { display: true, position: "top" },
     },
   };
 
