@@ -24,8 +24,8 @@ export function MonthsData(data) {
   return result;
 }
 
-export function DaysData(data) {
-  const result = [...Array(31)].map((_, item) => {
+export function DaysData(data, date) {
+  const result = [...Array(getDays(date.year, date.month))].map((_, item) => {
     const actual = data.find((value) => value.month == item + 1);
     if (actual) {
       return { _id: item, count: actual.count };
@@ -73,8 +73,8 @@ export function PosMonthsData(data) {
   return result;
 }
 
-export function PosDaysData(data) {
-  const result = [...Array(31)].map((_, item) => {
+export function PosDaysData(data, date) {
+  const result = [...Array(getDays(date.year, date.month))].map((_, item) => {
     const actual = data.find((value) => value.day == item + 1);
     if (actual) {
       return { _id: item, count: actual.count };
@@ -95,3 +95,7 @@ export function PosHoursData(data) {
   });
   return result;
 }
+
+const getDays = (year, month) => {
+  return new Date(year, months.indexOf(month) + 1, 0).getDate();
+};

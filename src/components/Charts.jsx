@@ -108,19 +108,19 @@ export function PieChart({ dataset, label, height }) {
   );
 }
 
-export function LineChart({ dataset, label, height }) {
+export function LineChart({ dataset, predData, label, height }) {
   if (!dataset) {
     return;
   }
 
-  const chartData = {
+  let chartData = {
     labels: dataset.map((val) => val._id),
     datasets: [
       {
         label: label,
         data: dataset.map((val) => val.count),
         fill: true,
-        backgroundColor: ["rgba(190, 18, 60, 0.2)"],
+        backgroundColor: ["#be123c30"],
         borderColor: ["#be123c"],
         borderWidth: 2,
         borderRadius: 6,
@@ -128,6 +128,20 @@ export function LineChart({ dataset, label, height }) {
       },
     ],
   };
+
+  if (checkDataset(predData)) {
+    chartData.datasets[1] = {
+      label: "Predictions",
+      data: predData.map((val) => val.count),
+      fill: true,
+      backgroundColor: ["#1d4ed830"],
+      borderColor: ["#1d4ed8"],
+      borderWidth: 2,
+      borderRadius: 6,
+      tension: 0,
+    };
+  }
+
   const options = {
     maintainAspectRatio: false,
     plugins: {
@@ -140,4 +154,14 @@ export function LineChart({ dataset, label, height }) {
       <Line data={chartData} height={height} options={options} />
     </div>
   );
+}
+
+function checkDataset(dataset) {
+  let result = false;
+  dataset.forEach((item) => {
+    if (item.count > 0) {
+      result = result || true;
+    }
+  });
+  return result;
 }

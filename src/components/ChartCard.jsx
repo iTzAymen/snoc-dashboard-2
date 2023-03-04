@@ -12,6 +12,7 @@ import {
   PosMonthsData,
 } from "../js/DataToChartData";
 import { Spinner } from "../assets/icons";
+import { getForecastData, getPosForecastData } from "../js/ForecastData";
 
 export function TransactionTrendCard({
   posid,
@@ -27,6 +28,7 @@ export function TransactionTrendCard({
     year: currentYear,
   });
   const [chartData, setChartData] = useState(MonthsData([]));
+  const [predData, setPredData] = useState(MonthsData([]));
   const updateDate = (dateUpdates) => {
     const newDate = { ...date, ...dateUpdates };
     setDate(newDate);
@@ -36,24 +38,54 @@ export function TransactionTrendCard({
           if (newDate.month == "Months") {
             setChartData(PosMonthsData(res.data));
           } else if (newDate.day == "Days") {
-            setChartData(PosDaysData(res.data));
+            setChartData(PosDaysData(res.data, newDate));
           } else {
             setChartData(PosHoursData(res.data));
           }
         }
       });
+      if (
+        newDate.day == "Days" &&
+        newDate.month == "Feb" &&
+        newDate.year == 2023
+      ) {
+        getPosForecastData(posid).then((res) => {
+          if (res) {
+            setPredData(res);
+          }
+        });
+      } else {
+        setPredData(MonthsData([]));
+      }
     } else {
       getChartData(newDate).then((res) => {
         if (res.data) {
           if (newDate.month == "Months") {
             setChartData(MonthsData(res.data));
           } else if (newDate.day == "Days") {
-            setChartData(DaysData(res.data));
+            setChartData(DaysData(res.data, newDate));
           } else {
             setChartData(HoursData(res.data));
           }
         }
       });
+      if (
+        newDate.day == "Days" &&
+        newDate.month == "Feb" &&
+        newDate.year == 2023
+      ) {
+        const preds = localStorage.getItem("preds");
+        if (preds) {
+          setPredData(JSON.parse(preds));
+        }
+        getForecastData().then((res) => {
+          if (res) {
+            setPredData(res);
+          }
+        });
+      } else {
+        setPredData(MonthsData([]));
+      }
     }
   };
   useEffect(() => {
@@ -84,7 +116,12 @@ export function TransactionTrendCard({
         </div>
       </div>
       {chartData && (
-        <LineChart dataset={chartData} label={label} height={height} />
+        <LineChart
+          dataset={chartData}
+          predData={predData}
+          label={label}
+          height={height}
+        />
       )}
       {!chartData && <Spinner />}
     </div>
