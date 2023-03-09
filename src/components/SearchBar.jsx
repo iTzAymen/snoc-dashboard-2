@@ -17,7 +17,7 @@ export default function SearchBar({
       } else {
         setTimeout(() => {
           hiddenDiv.classList.add("hidden");
-        }, 100);
+        }, 250);
       }
     }
   }

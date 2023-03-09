@@ -94,7 +94,9 @@ export default function Navbar() {
           ref={navRef}
           className="nav-menu z-10 hidden md:flex my-auto md:gap-4"
         >
-          {window_width <= 768 && <ProfileCard username="Aymen" rank="admin" />}
+          {window_width <= 768 && (
+            <ProfileCard username="SNOC USER" rank="admin" />
+          )}
           <a href="/" className="nav-menu-button rounded-lg focus-zinc">
             Overview
           </a>

@@ -39,7 +39,9 @@ export function PieChart({ dataset, label, height }) {
   if (!dataset) {
     return;
   }
-
+  dataset = dataset.filter(
+    (val) => !["null", "#"].includes(val._id.toLowerCase())
+  );
   const chartData = {
     labels: dataset.map((val) => val._id),
     datasets: [

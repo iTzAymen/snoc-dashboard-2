@@ -31,7 +31,7 @@ export default function ProfileBtn({ children }) {
         leaveTo="transform opacity-0 scale-100"
       >
         <Menu.Items className="absolute border overflow-hidden -top-72 md:top-10 md:right-0 mt-2 w-full md:w-56 origin-top-right divide-y divide-opacity-30 rounded-lg shadow-lg ring-opacity-5 focus:outline-none ring-1 divide-zinc-300 border-zinc-300 border-opacity-50 bg-white ring-black    dark:divide-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:shadow-zinc-900 dark:ring-black">
-          <ProfileCard username="Aymen" rank="admin" />
+          <ProfileCard username="SNOC USER" rank="admin" />
           <div className="w-full items-center px-2 py-2 text-sm">
             <DarkmodeToggle />
           </div>

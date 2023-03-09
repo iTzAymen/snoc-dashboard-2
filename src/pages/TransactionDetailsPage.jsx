@@ -45,6 +45,10 @@ export default function TransactionDetailsPage() {
                           </Link>
                         </div>
                       );
+                    } else if (
+                      ["null", "#"].includes(String(key[1]).toLowerCase())
+                    ) {
+                      return;
                     } else {
                       return (
                         <div

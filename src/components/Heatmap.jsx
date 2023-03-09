@@ -105,8 +105,8 @@ const Heatmap = ({ city_data, height }) => {
     });
 
     setStyle({
-      fillOpacity: 0.5,
-      strokeOpacity: "0.1",
+      fillOpacity: 1,
+      strokeOpacity: "1",
     });
   };
 
@@ -131,7 +131,7 @@ const Heatmap = ({ city_data, height }) => {
     });
     return (
       <path
-        className="fill-dark stroke-dark dark:stroke-white hover:fill-rose-500  hover:stroke-rose-800  dark:fill-white transition-all dark:hover:fill-rose-700 dark:hover:stroke-rose-900"
+        className="fill-rose-600 stroke-rose-900 dark:stroke-white hover:fill-rose-700  hover:stroke-rose-900  dark:fill-white transition-all dark:hover:fill-rose-900 dark:hover:stroke-rose-900"
         style={style}
         key={val.id}
         id={val.id}
@@ -148,6 +148,23 @@ const Heatmap = ({ city_data, height }) => {
 
   return (
     <div className="relative">
+      <div className="absolute h-full right-2 w-3 sm:w-4 md:w-5 py-8 sm:py-14 md:py-12 xl:py-5 flex">
+        <div className="relative bg-gradient-to-b from-rose-600 grow dark:from-white rounded-sm border border-black dark:border-white border-opacity-25 dark:border-opacity-25">
+          <div className="absolute top-0 mr-3 right-full text-sm text-zinc-500">
+            {Math.floor((averageCityCount + maxCityCount) / 2).toLocaleString()}
+          </div>
+          <div className="hidden sm:block absolute top-1/2 -translate-y-1/2 mr-3 right-full text-sm text-zinc-500">
+            {Math.floor((averageCityCount + maxCityCount) / 4).toLocaleString()}
+          </div>
+          <div className="absolute bottom-0 mr-3 right-full text-sm text-zinc-500">
+            0
+          </div>
+          <div
+            id="divider"
+            className="w-full h-px bg-black dark:bg-white bg-opacity-50 dark:bg-opacity-50 absolute top-1/2 -translate-y-1/2"
+          ></div>
+        </div>
+      </div>
       <HeatmapTooltip
         label={tooltipData.label}
         value={tooltipData.value}

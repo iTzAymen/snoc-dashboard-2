@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getToken } from "./Login";
+import { faker } from "@faker-js/faker";
 
 export async function getCardsData() {
   console.log("getting cards data");
@@ -140,6 +141,20 @@ export async function getTransactionById(id) {
   const keys = Object.keys(data[0]);
   const values = Object.values(data[0]);
   const result = keys.map((key, index) => {
+    // faking data
+    if (key == "nom_client") {
+      return [key, faker.name.firstName()];
+    }
+    if (key == "prenom_client") {
+      return [key, faker.name.lastName()];
+    }
+    if (key == "titre") {
+      return [key, faker.name.sex()];
+    }
+    if (key == "date_naissance_client") {
+      const fakeDate = faker.date.birthdate().toISOString().split("T")[0];
+      return [key, fakeDate];
+    }
     return [key, values[index]];
   });
   console.log(`received transaction ${id} data`);
@@ -164,6 +179,10 @@ export async function getPosById(id, start, end) {
   const pos_info = keys.map((key, index) => {
     if (key == "snoc") {
       return;
+    }
+    // faking data
+    if (key == "num_agrement") {
+      return [key, "A" + Math.floor(Math.random() * 999999)];
     }
     return [key, values[index]];
   });
