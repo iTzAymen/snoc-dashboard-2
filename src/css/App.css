@@ -12,13 +12,17 @@
   }
 
   body::-webkit-scrollbar {
-    @apply w-3 bg-zinc-100 rounded;
+    @apply w-4 bg-white;
     @apply dark:bg-zinc-900;
   }
 
   body::-webkit-scrollbar-thumb {
-    @apply bg-zinc-300 rounded bg-opacity-50;
-    @apply dark:bg-zinc-800;
+    @apply rounded bg-opacity-50 transition-all;
+    @apply bg-zinc-300 hover:bg-zinc-400;
+    @apply dark:bg-zinc-600 dark:hover:bg-zinc-300;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
   }
 
   *,
